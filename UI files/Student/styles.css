@@ -1,0 +1,219 @@
+/* READ THIS BEFORE ADDING/CHANGING/DELETING ANYTHING:
+   Any css class used by multple webpages goes here.
+   Naming style for classes are as follow to keep codes maintainable,
+   and to keep it from conflicting with other js libraries:
+   .vaa[your css name] such as .vaacontainer
+   for css classes that apply to a specific web page in their respective folder, please 
+   name it the following way:
+   .vaa[abbrev page title][your css name] such as .vaadash???
+   List of page titles:
+   student dashboard - dash
+   degree plans - degs
+   active degree - deg
+   inactive degree - deg
+   explore plans - exps
+   
+   Something to note:
+   - when naming your css name, please choose the most sensible naming for maintainability
+   - when deciding between id selector(pound sign) or class selector (dot sign), use class
+   only when it will be apply to multiple html elements on a single page
+
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.header {
+  display: table-row;
+  height: 100px;
+  background-color: rgb(190, 0, 0);
+  color: white;
+}
+
+.header h1 {
+  font-size: 3em;
+  letter-spacing: 2px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 6em;
+  line-height: 1.4em;
+  height: 1.1em;
+}
+
+.header h3 {
+  font-size: 1em;
+  letter-spacing: 2px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 18em;
+}
+
+.footer {
+  display: table-row;
+  height: 3em;
+  background-color: rgb(80, 80, 80);
+  color: rgb(180, 180, 180);
+}
+
+.footer p {
+  font-size: 0.75em;
+  padding: 1.3em 0;
+  margin: 0;
+  margin-left: 13em;
+}
+
+.toplink {
+  float: right;
+}
+
+.toplink ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toplink li {
+  float: left;
+}
+
+.toplink li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 0.8em 1em;
+}
+
+.toplink li a:hover {
+  color: rgb(200, 200, 200);
+}
+
+.nav {
+  background-color: rgb(141, 0, 0);
+  display: table-row;
+  height: 1em;
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 14em;
+}
+
+.nav li {
+  float: left;
+  border-right: 1px solid black;
+  width: 14em;
+}
+
+.nav li:last-child {
+  border-right: none;
+}
+
+.nav li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding: 1em 2em;
+}
+
+.nav li a:hover:not(.navactive) {
+  background-color: rgb(114, 0, 0);
+}
+
+.navactive {
+  background-color: rgb(114, 0, 0);
+}
+
+.main {
+  height: 100%;
+  display: table;
+  width: 100%;
+}
+
+#heading {
+  display: table-row;
+}
+
+#mainheader {
+  color: rgb(184, 0, 0);
+  font-size: 3em; 
+  margin-left: 4.5em;
+  margin-bottom: 0.3em;
+}
+
+#path {
+  color: black;
+  font-size: 1em;
+  margin-left: 13.5em;
+  margin-top: 0;
+  margin-bottom: 5em;
+}
+
+.degreeplanblock {
+  display: block;
+  margin-left: 13.5em;
+  margin-bottom: 1em;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(150, 150, 150);
+  border-radius: 10px;
+  padding: 1em 1em;
+  width: 80%;
+}
+
+#major {
+  font-size: 2em;
+  margin-top: 0;
+  display: inline;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-color: rgb(200, 200, 200);
+}
+
+#activedegreelink {
+  text-decoration: none;
+  color: rgb(184, 0, 0);
+}
+
+#activedegreelink:hover {
+  color: rgb(140, 0, 0);
+}
+
+#transferringcollege {
+  font-size: 1em;
+}
+
+#intendedmajor {
+  font-size: 1em;
+}
+
+#degree {
+  font-size: 1em;
+}

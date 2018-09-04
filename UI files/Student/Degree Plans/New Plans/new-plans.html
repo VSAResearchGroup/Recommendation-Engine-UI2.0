@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Virtual Academic Advisor New Plans Page</title>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+<link rel='stylesheet' href='../../styles.css'>
+<link rel='stylesheet' href='new-plans.css'>
+
+<script src='../../jquery-3.2.1.js'></script>
+
+<script src='new-plans.js'></script>
+<style>
+.label {
+  font-weight: bold;
+  margin-left: 1em;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-size: 1em;
+}
+
+.dropdownbutton {
+  background-color: rgb(184, 0, 0);
+  color: white;
+  margin-left: 1em;
+  padding: 0.5em 2em;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdownbutton:hover, .dropdownbutton:focus {
+  background-color: rgb(114, 0, 0);
+}
+
+.downarrow {
+  font-size: 3em;
+  color: black;
+  line-height: 0.1em;
+}
+
+.dropdown-content {
+  display: none;
+  margin-left: 1em;
+  position: absolute;
+  background-color: rgb(210, 210, 210);
+  width: 25em;
+  overflow: auto;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 0.5em 1em;
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(130, 130, 130);
+}
+
+.show {
+  display:block;
+}
+
+
+.button {
+  font-size: 1em;
+  border: none;
+  padding: 0.5em 1em;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+}
+
+.generate {
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-top: 1em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.generate:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.generate:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <div class='toplink'>
+      <ul>
+        <li><a href='../../logout.html'>Log Out</a></li>
+	    <li><a href='../../help.html'>Help</a></li>
+	    <li><a href='../../account.html'>Hello, Test Student!</a></li>
+      </ul>
+    </div>
+    <a href="http://www.everettcc.edu/">
+			<img src="evcclogo.png" alt="Home Page" style="position:relative; top:20px; left:140px;">
+		</a>
+  </div>
+  
+  <div class='nav clearfix'>
+    <ul>
+      <li><a href='../../Student%20Dashboard/student-dashboard.html'>Student Dashboard</a></li>
+	  <li><a href='../degree-plans.html'>Degree Plans</a></li>
+	  <li><a href='#'>Explore Plans</a></li>
+    </ul>
+  </div>
+  
+  <div class='main clearfix'>
+    <div class='heading'>
+      <h1 id='mainheader'>Create a New Plan</h1>
+      <h5 id='path'>Degree Plans >> Create a New Plan</h5>
+	</div>
+	<div class='dropdown'>
+	  <br><label class='label'>Transferring College:</label><br>
+	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='transferringcollege'>Select a college</button><br>
+		<!--<i class='downarrow material-icons'>arrow_drop_down</i>-->
+	    <div id='transcollegedropdown' class='dropdown-content'>
+		  <option value=''></option>
+		</div>
+		
+	  <br><label class='label'>Major:</label><br>	
+	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='major'>Select a major</button><br>
+	    <div id='majordropdown' class='dropdown-content'>
+		  <a href='#' onclick='myFunction2(this, 1);return false;'>Computer Engineering</a>
+		  <a href='#' onclick='myFunction2(this, 1);return false;'>Mechanical Engineering</a>
+		  <a href='#' onclick='myFunction2(this, 1);return false;'>Electrical Engineering</a>
+		</div>
+		
+	  <br><label class='label'>Time Preference:</label><br>	
+	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='timepreference'>Select a time preference</button><br>
+	    <div id='timeprefdropdown' class='dropdown-content'>
+		  <a href='#' onclick='myFunction2(this, 2);return false;'>Morning</a>
+		  <a href='#' onclick='myFunction2(this, 2);return false;'>Afternoon</a>
+		  <a href='#' onclick='myFunction2(this, 2);return false;'>Evening</a>
+		</div>
+		
+	  <br><label class='label'>Type of Enrollment:</label><br>	
+	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='enrollment'>Select type of enrollment</button><br>
+	    <div id='enrollmentdropdown' class='dropdown-content'>
+		  <a href='#' onclick='myFunction2(this, 3);return false;'>Full Time Student</a>
+		  <a href='#' onclick='myFunction2(this, 3);return false;'>Half Time Student</a>
+		  <a href='#' onclick='myFunction2(this, 3);return false;'>Part Time Student</a>
+		</div>
+		
+	  <br><label class='label'>Enroll in Summer:</label><br>	
+	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='summer'>Select option to enroll in summer</button><br>
+	    <div id='summerdropdown' class='dropdown-content'>
+		  <a href='#' onclick='myFunction2(this, 4);return false;'>Yes</a>
+		  <a href='#' onclick='myFunction2(this, 4);return false;'>No</a>
+		</div>
+		
+	  <br><label class='label'>Quarter Start:</label><br>	
+	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='quarter'>Select first quarter to start at</button><br>
+	    <div id='quarterdropdown' class='dropdown-content'>
+		  <a href='#' onclick='myFunction2(this, 5);return false;'>Fall</a>
+		  <a href='#' onclick='myFunction2(this, 5);return false;'>Winter</a>
+		  <a href='#' onclick='myFunction2(this, 5);return false;'>Spring</a>
+		</div>
+		
+	  <br><label class='label'>Job Type:</label><br>	
+	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='job'>Select a job type</button><br>
+	    <div id='jobdropdown' class='dropdown-content'>
+		  <a href='#' onclick='myFunction2(this, 6);return false;'>No Job</a>
+		  <a href='#' onclick='myFunction2(this, 6);return false;'>Part Time</a>
+		  <a href='#' onclick='myFunction2(this, 6);return false;'>Full Time</a>
+		</div>
+	</div>
+	<br><button class='generate button'>Generate Plans</button><br>
+  </div>
+
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+
+</div>
+</body>
+</html>

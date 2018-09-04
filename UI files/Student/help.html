@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Virtual Academic Advisor Help Page</title>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+<link rel="stylesheet" href="styles.css" >
+
+<script src="jquery-3.2.1.js"></script>
+<style>
+.contactbox {
+  font-size: 1em;
+  border: 0.3em solid rgb(150, 150, 150);
+  display: inline-block;
+  margin-left: 13.5em;
+  margin-bottom: 10em;
+  border-radius: 0.5em;
+  padding: 1em 1em;
+}
+
+#contacttitle {
+  display: inline-block;
+  font-size: 2em;
+  margin: 0;
+  border-bottom: 0.1em solid rgb(200, 200, 200);
+}
+
+#contactemail {
+  
+}
+
+#contactphone {
+
+}
+
+#contactlocation {
+
+}
+
+#contacthour {
+  display: inline;
+  float: left;
+  margin: 0;
+}
+
+.hourlist {
+  display: inline-block;
+}
+
+.hourlist ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+
+.hourlist li {
+  margin: 0.5em 0.5em;
+}
+
+.hourlist li:first-child {
+  margin-top: 0;
+}
+
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <div class='toplink'>
+      <ul>
+	    <li><a href='account.html'>Hello, Test Student!</a></li>
+	    <li><a href='help.html'>Help</a></li>
+	    <li><a href='logout.html'>Log Out</a></li>
+      </ul>
+    </div>
+    <h1>EVERETT</h1>
+    <h3>COMMUNITY COLLEGE</h3>
+  </div>
+  
+  <div class='nav clearfix'>
+    <ul>
+      <li><a href='./Student%20Dashboard/student-dashboard.html'>Student Dashboard</a></li>
+	  <li><a href='./Degree%20Plans/degree-plans.html'>Degree Plans</a></li>
+	  <li><a href='#'>Explore Plans</a></li>
+    </ul>
+  </div>
+  
+  <div class='main clearfix'>
+    <div class='heading'>
+      <h1 id='mainheader'>Help</h1>
+      <h5 id='path'>Help</h5>
+	</div>
+    <div class='contactbox'>
+	  <h2 id='contacttitle'>Contact Info</h2>
+	  <p id='contactemail'><b>Contact Email:</b> <span>advising@everettcc.edu</span></p>
+	  <p id='contactphone'><b>Contact Phone Number:</b> <span>425-388-9339</span></p>
+	  <p id='contactlocation'><b>Location:</b> <span>Rainier Hall</span></p>
+	  
+	  <p id='contacthour'><b>Hours:</b></p>
+	  <div class='hourlist'>
+	    <ul>
+		  <li>Monday: <span>9:00am to 6:00pm</span></li>
+		  <li>Tuesday: <span>9:00am to 4:30pm</span></li>
+		  <li>Wednesday: <span>9:00am to 4:30pm</span></li>
+		  <li>Thursday: <span>9:00am to 4:30pm</span></li>
+		  <li>Friday: <span>10:00am to 4:30pm</span></li>
+		</ul>
+	  </div>
+    </div>
+    <p id='contentHolder'></p>
+  </div>
+
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+
+</div>
+
+<script>
+</script>
+</body>
+</html>

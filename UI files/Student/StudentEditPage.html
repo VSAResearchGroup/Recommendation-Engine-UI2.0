@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Virtual Academic Advisor Account Page</title>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+<link rel="stylesheet" href="styles.css" >
+
+<script src="jquery-3.2.1.js"></script>
+<script src="editPage.js"></script>
+<style>
+
+.cube{
+    width: 650px;
+    padding: 1em;
+    background: #DDF;
+	border: 5px solid black;
+    margin: auto;
+	margin-bottom: 100px;
+	position:relative; 
+	top:10px; 
+	right:130px;
+}
+
+input(
+	padding: 10 px;
+	font-size: inherit;
+)
+
+input[type="text"]
+{
+	display:block;
+	margin-bottom: 15px;
+	width: 175px;
+}
+input[type="Email"]
+{
+	display:block;
+	margin-bottom: 5px;
+	width: 175px;
+}
+
+
+
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <div class='toplink'>
+      <ul>
+	    <li><a href='account.html'>Hello, Test Student!</a></li>
+	    <li><a href='help.html'>Help</a></li>
+	    <li><a href='logout.html'>Log Out</a></li>
+      </ul>
+    </div>
+    <a href="http://www.everettcc.edu/">
+			<img src="evcclogo.png" alt="Home Page" style="position:relative; top:20px; left:140px;">
+		</a>
+  </div>
+  
+  <div class='nav clearfix'>
+    <ul>
+      <li><a href='./Student%20Dashboard/student-dashboard.html'>Student Dashboard</a></li>
+	  <li><a href='./Degree%20Plans/degree-plans.html'>Degree Plans</a></li>
+	  <li><a href='#'>Explore Plans</a></li>
+    </ul>
+  </div>
+  
+  <div class='main clearfix'>
+    <div class='heading'>
+      <h1 id='mainheader'>Student Basic Information</h1>
+	  
+		<form class = "cube" action = "account.html" method = "post">
+		<p>Enter in your information in order to start your first plan</p>
+		<input id ='nameF' type = "text" placeholder = "First Name"></input>
+		<input id ='nameL'type = "text" placeholder = "Last Name"></input>
+		<input id='email' type = "email" placeholder = "Email"></input>
+		<select id = 'uni' style= "margin-bottom: 5px;">
+		
+		</select>
+		<br>
+		<select id='stDegree'style= "margin-bottom: 5px;">
+		</select>
+		<br>
+		<p>Time Preference:</p>
+		<select id='timePref'style= "margin-bottom: 5px;">
+		<option selected disabled>Select Time Preference</option>
+		<option value="1">Morning Classes</option>
+		<option value="3">Evening Classes</option>
+		</select>
+		<p>Enrollment Type:</p>
+		<select id= 'eType'style= "margin-bottom: 5px;">
+		<option selected disabled>Select Enrollment Type</option>
+		<option value="1">Full-Time Student</option>
+		<option value="2">Half-Time Student</option>
+		</select>
+		<p>Job Type:</p>
+		<select id ='jType' style= "margin-bottom: 15px;">
+		<option selected disabled>Select Job Type</option>
+		<option value="3">No Job</option>
+		<option value="1">Full-Time Employee</option>
+		<option value="2">Part-Time Employee</option>
+		</select>
+		<br>
+		<input id= "save" type = "Submit" value = "Submit"></input>
+		</form>
+	</div>  
+    <p id='contentHolder'></p>
+  </div>
+
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+
+</div>
+
+<script>
+</script>
+</body>
+</html>

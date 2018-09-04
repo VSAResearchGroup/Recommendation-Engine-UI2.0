@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<title>Virtual Academic Advisor Advisor Dashboard Page</title>
+<meta charset='UTF-8' >
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='styles.css'>
+
+<script src='jquery-3.2.1.js'></script>
+
+<style>
+.main {
+  background-color: rgb(187, 0, 0);
+  text-align: center;
+}
+
+#logo-box {
+  position: relative;
+  width: 18em;
+  height: 18em;
+  margin: 4em auto 2em;
+  animation-name: rotate;
+  animation-timing-function: linear;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+  25% { transform: rotate(90deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(270deg);}
+  100% { transform: rotate(360deg);}
+}
+
+.load {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  margin: -0.25em;
+  height: 0.5em;
+  width: 0.5em;
+  background-color: black;
+  border: 0.1em dashed black;
+  border-radius: 8em;
+  z-index: 1;
+  animation-name: size;
+  animation-timing-function: linear;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes size {
+  10% { height: 0.6em; width: 0.6em;}
+  20% { height: 0.7em; width: 0.7em;}
+  30% { height: 0.8em; width: 0.8em;}
+  40% { height: 0.9em; width: 0.9em;}
+  50% { height: 1.0em; width: 1.0em;}
+  60% { height: 0.9em; width: 0.9em;}
+  70% { height: 0.8em; width: 0.8em;}
+  80% { height: 0.7em; width: 0.7em;}
+  90% { height: 0.6em; width: 0.6em;}
+  100% { height: 0.5em; width: 0.5em;}
+}
+
+#logo {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  fill: rgb(170, 170, 170);
+}
+
+#loadingMessage {
+}
+<div id='load'></div>
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+  </div>
+  
+  <div class='main clearfix'>
+    <div id='logo-box'>
+	  
+	  <div class='load' style='transform: translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(15deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(30deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(45deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(60deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(75deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: translate(9em, 0em);'></div>
+	  <div class='load' style='transform: rotate(105deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(120deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(135deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(150deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(165deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: translate(0em, 9em);'></div>
+	  <div class='load' style='transform: rotate(195deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(210deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(225deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(240deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(255deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: translate(-9em, 0em);'></div>
+	  <div class='load' style='transform: rotate(285deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(300deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(315deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(330deg) translate(0em, -9em);'></div>
+	  <div class='load' style='transform: rotate(345deg) translate(0em, -9em);'></div>
+	  <svg id='logo'>
+		<circle cx="50%" cy="50%" r="7em";/>
+		Sorry, your browser does not support inline SVG.
+	  </svg> 
+	  
+	</div>
+	<p id='loadingMessage'>hello</p>
+  </div>
+
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+
+</div>
+<script>
+$(document).ready(function() {
+    /*
+	Uncomment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	Comment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	*/
+    alert('Loading Complete!');
+	location.href = 'Student%20Dashboard/student-dashboard.html';
+	
+	/*
+	Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	var ajaxStatusObject = JSON.parse(sessionStorage.getItem('recentAjaxStatusProperties'));
+	var sessionAjaxStatusObject = JSON.parse(sessionStorage.getItem('sessionAjaxStatusProperties'));
+	var propertiesIndex, currentPropertyValue;
+	for (propertiesIndex in ajaxStatusObject) {
+	    currentPropertyValue = ajaxStatusObject[propertiesIndex];
+	    while(!currentPropertyValue) {  //break out of while loop when AJAX call succeeded
+		    ajaxStatusObject = JSON.parse(sessionStorage.getItem('recentAjaxStatusProperties'));
+			currentPropertyValue = ajaxStatusObject[propertiesIndex];
+		}
+		sessionAjaxStatusObject[propertiesIndex] = currentPropertyValue;
+		delete ajaxStatusObject[propertiesIndex];
+		$('#loadingMessage').text(propertiesIndex + '...done!');
+	}
+	
+	sessionStorage.setItem('sessionAjaxStatusProperties', JSON.stringify(sessionAjaxStatusObject));
+	sessionStorage.setItem('recentAjaxStatusProperties', JSON.stringify(ajaxStatusObject));
+    $('#loadingMessage').text('Loading Complete!');
+    location.href = sessionStorage.getItem('nextWebPage');*/
+});
+</script>
+</body>
+</html>

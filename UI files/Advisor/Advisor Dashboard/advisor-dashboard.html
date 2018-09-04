@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<title>Virtual Academic Advisor Advisor Dashboard Page</title>
+<meta charset='UTF-8' >
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='../styles.css'>
+<link rel='stylesheet' href='advisor-dashboard.css'>
+
+<script src='../jquery-3.2.1.js'></script>
+<script src='advisor-dashboard.js'></script>
+
+<style>
+#headings { 
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: 6.75em; 
+  margin-top: 3em;
+}
+
+#dropdownbox {
+  display: inline-block;
+  font-size: 1em;
+  margin-left: 13.5em;
+  margin-bottom: 1em;
+  position: relative;
+  width: 80%;
+}
+
+.dropdownbutton {
+  background-color: rgb(184, 0, 0);
+  color: white;
+  margin-left: 1em;
+  padding: 0.5em 2em;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdownbutton:hover, .dropdownbutton:focus {
+  background-color: rgb(114, 0, 0);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(210, 210, 210);
+  overflow: auto;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  width: auto;
+}
+
+#request-type-item {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#request-type-item li{
+  border-bottom: 0.1em solid rgb(130, 130, 130);
+}
+
+#request-type-item li:last-child{
+  border-bottom: none;
+}
+
+#request-type-item a {
+  padding: 0.5em 1em;
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+
+#request-type-item a:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+#sort-drop-down {
+  display: none;
+  margin-left: 5.55em;
+}
+
+#sort-type-item {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sort-type-item li{
+  border-bottom: 0.1em solid rgb(130, 130, 130);
+}
+
+#sort-type-item li:last-child{
+  border-bottom: none;
+}
+
+#sort-type-item a {
+  padding: 0.5em 1em;
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+
+#sort-type-item a:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.sort-button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+  margin: 1em 1em;
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.sort-button:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.sort-button:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+
+#advance-button {
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: white;
+  color: rgb(184, 0, 0);
+}
+
+.refresh {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  color: rgb(184, 0, 0);
+}
+
+.studentlist-heading {
+  list-style-type: none;
+  height: 1.5em;
+  margin: 0 0 1em 0;
+  padding: 0;
+  border-bottom: 0.1em solid rgb(150, 150, 150);
+}
+
+.studentlist-heading li {
+  float: left;
+  width: 20%;
+  padding: 1 1em;
+  text-align: left;
+}
+
+.studentlist-heading li:nth-child(3) {
+  width: 20%;
+  text-align: left;
+}
+
+.studentlist-heading li:nth-child(4) {
+  width: 37%;
+}
+
+.studentlist-heading li:last-child {
+  width: 18%;
+}
+
+.studentrow {
+  list-style-type: none;
+  height: 3em;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1em;
+  border: 0.1em solid rgb(150, 150, 150);
+  background-color: rgb(200, 200, 200);
+  overflow: hidden;
+  height: auto;
+  overflow:auto;
+}
+
+.studentrow:hover {
+  background-color: rgb(170, 170, 170);
+}
+
+.studentrow li {
+  float: left;
+  width: 19%;
+  padding: 1em 1em;
+  
+  white-space: nowrap;
+  text-align: left;
+}
+
+.studentrow li:nth-child(3) {
+  width: 20%;
+  text-align: left;
+}
+
+.studentrow li:nth-child(4) {
+  width: 37%;
+}
+
+.studentrow li a {
+  color: rgb(184, 0, 0);
+}
+
+.studentrow li:last-child {
+  width: 18%;
+  text-align: center;
+}
+
+.advise-button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.advise-button:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.advise-button:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}.advise-button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.advise-button:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.advise-button:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <div class='toplink'>
+      <ul>
+	    <li><a id='account' href='../account.html'>Hello, Test Advisor!</a></li>
+		<li><a id='help' href='../help.html'>Help</a></li>
+        <li><a id='logout' href='../logout.html'>Log Out</a></li>
+      </ul>
+    </div>
+    <h1>EVERETT</h1>
+    <h3>COMMUNITY COLLEGE</h3>
+  </div>
+  
+  <div class='nav clearfix'>
+    <ul>
+      <li><a id='advisordashboard' href='advisor-dashboard.html'>Advisor Dashboard</a></li>
+	  <li><a id='sitesetting' href='#'>Site Setting</a></li>
+    </ul>
+  </div>
+  
+  <div class='main clearfix'>
+    <div class='heading'>
+      <h1 id='mainheader'>Dashboard</h1>
+     
+	</div>
+	<h2 id='headings'>Current & Recent Approval Requests</h2>
+	<div class='degreeplanblock' style='position:relative; margin-bottom: 1em;'>
+	  <i class="refresh fa fa-refresh fa-spin"></i>
+	  <ul class='studentlist-heading'>
+		<li>Student ID</li>
+		<li>Student Name</li>
+      </ul>
+	  <div id='studentlist'>
+	    
+      </div>		
+	</div>
+  </div>
+
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+
+</div>
+
+</body>
+</html>

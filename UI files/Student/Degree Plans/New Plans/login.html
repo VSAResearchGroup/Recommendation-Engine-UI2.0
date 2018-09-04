@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>ChatOn Login</title>
+	  
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+	  <style>
+	  body{
+		background-color: #00BB77;
+	}
+	.main{
+		position:relative;
+		margin: auto;
+		background: #E1FFA5;
+		width: 350px;
+		height: 150px;
+		padding-left: 15px;
+		padding-top: 15px;
+	}
+	  input[type=text]{
+		width:83%;
+		border:2px solid #aaa;
+		border-radius:4px;
+		margin:8px 0;
+		outline:none;
+		padding:8px;
+		box-sizing:border-box;
+	}
+		.textIcon input[type=text]{
+		padding-left:40px;
+	}
+  
+		.textIcon{
+		position:relative;
+		
+	}
+  
+		.textIcon #left{
+		position:absolute;
+		top:8px;
+		padding:9px 8px;
+		color:#00E594;
+		
+	}
+		.textIcon #right{
+		position:absolute;
+		left: 242px;
+		top:8px;
+		padding:9px 8px;
+		color:#00E594;
+		
+	}
+		.btn{
+			color: white;
+			font-size: 18px;
+			font-family: "Times New Roman";
+			font-weight: bold;
+			background: #00BB77;
+			width: 95%;
+			margin-top: 10px;
+			white-space: nowrap;
+			cursor: pointer;
+			border: none;
+	}
+		.btn2{
+		float:right;
+		position:absolute;
+		top: 11px;
+		height: 30px;
+		cursor: pointer;
+		border: none;
+		background: #00BB77;
+		
+		
+	}
+	
+		.btn2 i{
+		color:white;
+	}
+		
+	</style>
+   </head>
+   <body>
+   <h2 style="margin-bottom: 15px; color: white;" align="center">Welcome</h2>
+   <div class= "main">
+		<div class="textIcon">
+		<i id="left" class="fa fa-user fa-lg fa-fw"></i>
+		<input type="text" placeholder="Email">
+	</div>
+
+	<div class="textIcon">
+		<i id="left" class="fa fa-lock fa-lg fa-fw" ></i>
+		<input type="text" placeholder="Password">
+		<button class="btn2"><i class="fa fa-eye fa-lg fa-fw" ></i></button>
+	</div>
+	<input type = "button" value="Sign In" class="btn"></input>
+	</div>
+   </body>
+</html>

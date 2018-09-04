@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Virtual Academic Advisor Degree Plans Page</title>
+<link rel="shortcut icon" href="favicon.ico"/>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+<link rel='stylesheet' href='../styles.css'>
+<link rel='stylesheet' href='degree-plans.css'>
+
+<script src='../jquery-3.2.1.js'></script>
+<script src='../vaajavascript.js'></script>
+<script src='degree-plans.js'></script>
+<style>
+.headings { 
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 0;
+  margin-left: 6.75em; 
+  margin-bottom: 0.5em;
+}
+
+.button {
+  font-size: 1em;
+  border: none;
+  padding: 0.5em 1em;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+}
+
+.properties {
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.properties:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.properties:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+
+#inactiveplanlist {
+  list-style-type: none;
+}
+
+.undoIcon {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  color: rgb(184, 0, 0);
+  cursor: pointer;
+}
+
+#inactiveplanlist li {
+  margin-bottom: 1em;
+}
+
+.inactiveplanname {
+  font-size: 1em;
+  font-weight: bold;
+  color: rgb(184, 0, 0);
+  margin-right: 1em;
+  width: 50%;
+  display: inline-block;
+}
+
+.inactiveplanname:hover {
+  color: rgb(140, 0, 0);
+}
+
+#createplan {
+  font-size: 1em;
+  font-weight: bold;
+  display: block;
+  margin-top: 0;
+  margin-left: 13.5em; 
+  margin-bottom: 5em;
+  color: rgb(184, 0, 0);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalcontent {
+  position: relative;
+  left: 30%;
+  top: 10%;
+  border: 0.3em solid rgb(184, 0, 0);
+  border-radius: 0.3em;
+  background-color: white;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.fadeIn {
+  display: block;
+  animation-name: fadeIn;
+  animation-duration: 1s
+}
+
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+#propertieslist {
+  list-style-type: none;
+  margin: 1em 1em;
+  padding: 0;
+}
+
+#propertieslist li {
+  margin-bottom: 1em; 
+  width: 100%;
+  height: 1.5em;
+}
+
+#activeplantitle {
+  min-width: 90%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <div class='toplink'>
+      <ul>
+	    <li><a href='../account.html'>Hello, Test Student!</a></li>
+		<li><a href='../help.html'>Help</a></li>
+        <li><a href='../logout.html'>Log Out</a></li>
+      </ul>
+    </div>
+		<a href="http://www.everettcc.edu/">
+			<img src="evcclogo.png" alt="Home Page" style="position:relative; top:20px; left:140px;">
+		</a>
+  </div>
+  
+  <div class='nav clearfix'>
+    <ul>
+      <li><a id='studentdashboard' href='../Student%20Dashboard/student-dashboard.html'>Student Dashboard</a></li>
+	  <li><a id='degreeplans' href='degree-plans.html'>Degree Plans</a></li>
+	  <li><a id='exploreplans' href='#'>Explore Plans</a></li>
+    </ul>
+  </div>
+  
+  <div class='main clearfix'>
+    <div class='heading'>
+      <h1 id='mainheader'>Degree Plans</h1>
+      <h5 id='path'>Degree Plans</h5>
+	</div>
+	
+	<h2 class='headings'>Active Degree Plan</h2>
+	<div class='degreeplanblock' style='position:relative;'>
+	  <!--
+	  Uncomment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	  Comment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	  -->
+	  <h2 id='major'><a id='activedegreelink' href='./Active%20Degree%20Plan/active-degree-table.html'>University of Washington Bothell - Computer Science</a></h2>
+	  <h4 id='currentcollege'>Current College: Everett Community College</h4>
+	  <h4 id='transferringcollege'>Transferring College: University of Washington Bothell</h4>
+	  <h4 id='intendedmajor'>Intended Major: Computer Science</h4>
+	  <h4 id='degree'>Degree: Associate in Arts and Sciences - Direct Transfer</h4>
+	  <!--
+	  Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	  Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	  <h2 id="major"></h2>
+	  <h4 id='currentcollege'>Current College: Everett Community College</h4>
+	  <h4 id='transferringcollege'></h4>
+	  <h4 id='intendedmajor'></h4>
+	  <h4 id='degree'></h4>
+	  -->
+	  <h2 id='planTitle'></h2>
+	  <p id='direction'><b></b></p>
+	  <ul id='directionlist'>
+	  </ul>
+	  <button class='button properties propertiesButton' style='position: absolute; bottom: 1em; right: 1em;'>Properties</button>
+	</div>
+
+	<h2 class='headings'>Inactive Degree Plan</h2>
+	<div class='degreeplanblock' style='position: relative;'>
+	  <i class="undoIcon fa fa-undo"></i>
+	  <p id='inactiveplanheading'></p>
+	  <ul id='inactiveplanlist'>
+	    <!--
+	    Uncomment these codes (li tags) if testing locally without connected to the backend (i.e. not making AJAX calls)
+	    Comment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	    -->
+	    <li>
+		  <div style="width:100%">
+		    <a class='inactiveplanname' href='./Active%20Degree%20Plan/active-degree-table.html'>University of Washington Bothell - Business Administration</a>
+			<button class='button properties deleteButton' style='margin-right:1em;'>Delete</button>
+			<button class='button properties cloneButton' style='margin-right:1em;'>Clone</button>
+			<button class='button properties propertiesButton'>Properties</button>
+		  </div>
+		</li>
+		<li>
+		  <div style="width:100%">
+		    <a class='inactiveplanname' href='./Active%20Degree%20Plan/active-degree-table.html'>University of Washington Bothell - Interactive Media Design</a>
+			<button class='button properties deleteButton' style='margin-right:1em;'>Delete</button>
+			<button class='button properties cloneButton' style='margin-right:1em;'>Clone</button>
+			<button class='button properties propertiesButton'>Properties</button>
+		  </div>
+		</li>
+		<li>
+		  <div style="width:100%">
+		    <a class='inactiveplanname' href='./Active%20Degree%20Plan/active-degree-table.html'>University of Washington Bothell - Computer Science 2</a>
+			<button class='button properties deleteButton' style='margin-right:1em;'>Delete</button>
+			<button class='button properties cloneButton' style='margin-right:1em;'>Clone</button>
+			<button class='button properties propertiesButton'>Properties</button>
+		  </div>
+		</li>
+	  </ul>
+	</div>
+	
+	<h2 class='headings'>Create a New Degree Plan</h2>
+	<a id='createplan' href='./New%20Plans/new-plans.html'>Create a new degree plan</a>
+	
+	<div class='modal'>
+	  <div class='modalcontent'>
+	    <ul id='propertieslist'>
+		  <li><b>Title:</b> <input id='activeplantitle' spellcheck='false' type='text'></input></li>
+		  <li><b>Major:</b> Computer Science</li>
+		  <li><b>Transferring College:</b> University of Washington Bothell</li>
+		  <li><b>Summer Options:</b> Yes</li>
+		  <li><b>Time Preference:</b> Morning</li>
+		  <li><b>Quarter Start:</b> Fall</li>
+		  <li><b>Job Type:</b> No Job</li>
+		  <li><b>Date Created:</b> 10/3/2017 3:05 PM</li>
+		  <li><b>Date Modified:</b> 10/5/2017 5:23 PM</li>
+		</ul>
+	  </div>
+	</div>
+	
+  </div>
+
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+<script>
+$(document).ready(function() {
+    /*
+	Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+    vaaDegsSetActivePlanInfo();
+	vaaDegsSetInactivePlanInfo();*/
+	setInactivePlanStatusString();
+	setInactivePlanCopyCount();
+});
+
+$('#activedegreelink').click(function(eventObject) {
+    console.log('active degree link has been clicked');
+    if (Number(localStorage.getItem('activePlanRetrieved')) == 0) {
+	    console.log('activeplan has not been retrieved before');
+	    eventObject.preventDefault();
+	    apiURL = 'http://localhost:5000/api/Vsa/';
+	    apiURL += localStorage.getItem('jsonActivePlanID');
+	    $.ajax({
+	        url: apiURL,
+	        type: 'GET',
+	        dataType: 'json',
+	        success: function(jsonText) {
+		        console.log('This is the active plan: ' + jsonText);
+			    localStorage.setItem('activePlanArray', JSON.stringify(jsonText));
+			    localStorage.setItem('activePlanRetrieved', '1'); //set it so ajax call will not be called again.
+			    location.href = '../Degree%20Plans/Active%20Degree%20Plan/active-degree-table.html';
+	        },
+	        error: function() {
+	            console.log('AJAX failed');
+	        }
+	    }) 
+	}
+	console.log('activeplan has been retrieved before');
+});
+
+$('.inactiveplanname').click(function(eventObject) {
+	var inactivePlans = JSON.parse(localStorage.getItem('inactivePlanArray'));
+	var index = 0;
+	var inactivePlanName; 
+	while (inactivePlans[index].school + ' - ' + inactivePlans[index].major != $(this).text()) { index++;}
+	var statusString = localStorage.getItem('inactivePlanRetrieved');
+	console.log('got passed the while loop');
+	if (Number(statusString.substring(index, index+1)) == 0) {
+	    console.log('inactive plan has not been retrieved before');
+		eventObject.preventDefault();
+		//What would be the url here???
+		apiURL = 'http://localhost:5000/api/Vsa/';
+		apiURL += inactivePlans[index].planID;
+	    $.ajax({
+	        url: apiURL,
+	        type: 'GET',
+	        dataType: 'json',
+	        success: function(jsonText) {
+		        console.log('These are the inactive plan: ' + jsonText);
+			    localStorage.setItem(inactivePlans[index].school + ' - ' + inactivePlans[index].major, JSON.stringify(jsonText));
+				statusString = statusString.substring(0, index) + '1' + statusString.substring(index+1);
+			    localStorage.setItem('inactivePlanRetrieved', statusString); //set it so ajax call will not be called again.
+			    location.href = './Active%20Degree%20Plan/active-degree-table.html';
+	        },
+	        error: function() {
+	            console.log('AJAX failed');
+	        }
+	    }) 
+	}
+	console.log('inactive plan names has been retrieved before');
+});
+
+$(document).ready(function() {
+    $('#inactiveplanlist').on('click', 'button.cloneButton', function() {
+	    var numOfPlan = localStorage.getItem('numOfInactivePlan');
+		console.log(numOfPlan);
+	    if (numOfPlan != undefined && numOfPlan < 12) {
+		    alert('clone');
+		    var inactivePlanLink, removeIcon, cloneIcon, properties;
+    	    var divElement, liElement;
+	    	var index = 0;
+		    var inactivePlanName = $(this).siblings('a').text();  //get the inactive plan name align with this button
+			var newInactivePlanName = '';
+		    //var inactivePlans = JSON.parse(localStorage.getItem('inactivePlanArray'));
+		    //while (inactivePlans[index].inactiveplanname != inactivePlanName) { index++;}
+		    //var countString = localStorage.getItem('inactivePlanCount');
+		    //var statusString = localStorage.getItem('inactivePlanRetrieved');
+		    //var count = countString.substring(index, index+1);
+		    var count = 0;  //comment this when testing while connected to backend
+		    //inactivePlanLink = $('<a></a>').text(inactivePlanName + '(' + count + ')');
+			newInactivePlanName = inactivePlanName + ' (' + count + ')';
+		    inactivePlanLink = $('<a></a>').text(newInactivePlanName);
+		    inactivePlanLink.attr('href', './Active%20Degree%20Plan/active-degree-table.html');
+		    inactivePlanLink.addClass('inactiveplanname');
+		    
+		    //console.log('before' + countString);
+		    //countString = countString.substring(0, index) + (++count) + '0' + countString.substring(index+1);
+		    //statusString = statusString.substring(0, index+1) + '0' + statusString.substring(index+1);
+		    //console.log('after' + countString);
+	        //localStorage.setItem('inactivePlanCount', countString);
+		    
+		    removeIcon = $('<button></button>').text('Delete');
+		    removeIcon.addClass('button properties deleteButton');
+		    removeIcon.css('margin-right', '1em');
+		
+		    cloneIcon = $('<button></button>').text('Clone');
+		    cloneIcon.addClass('button properties cloneButton');
+		    cloneIcon.css('margin-right', '1em');
+		
+		    properties = $('<button></button>').text('Properties');
+		    properties.addClass('button properties propertiesButton');
+		
+		    divElement = $('<div></div>').append(inactivePlanLink, removeIcon, cloneIcon, properties);
+		    liElement = $('<li></li>').append(divElement);
+		    liElement.css('margin-top', '1em');
+		    $(this).parents('li').after(liElement);
+			//var newObject = inactivePlans[index];
+			//console.log("old element's name: " + newObject.inactiveplanname);
+			//newObject.inactiveplanname = newInactivePlanName;
+			//inactivePlans.splice(index, 0, newObject);
+			//console.log("new element's name: " + newObject.inactiveplanname);
+			//console.log("old element's name: " + inactivePlans[index].inactiveplanname);
+		} else if (numOfPlan != undefined && numOfPlan >= 12){
+		    //do notification to user that they have exceed the max amount of plan they can have
+			alert('Have already reach the max number of plans that can be created: 12');
+		}
+    });
+	
+	$('#inactiveplanlist').on('click', 'button.deleteButton', function() {
+		var numOfPlan = localStorage.getItem('numOfInactivePlan');
+		if (numOfPlan > 0) {
+	    	var index = 0;
+		    //var inactivePlans = JSON.parse(localStorage.getItem('inactivePlanArray'));
+			//var inactivePlanName = $(this).siblings('a').text();
+		    //while (inactivePlans[index].inactiveplanname != inactivePlanName) { index++;}
+		    //var countString = localStorage.getItem('inactivePlanCount');
+		    //var statusString = localStorage.getItem('inactivePlanRetrieved');
+		    
+		    //console.log('before delete for countString: ' + countString);
+			//console.log('before delete for statusString: ' + statusString);
+			//countString = countString.replace(/3/g, '2');
+			//statusString = statusString.replace(/3/g, '2');
+		    //countString = countString.substring(0, index) + '3' + countString.substring(index+1);
+		    //statusString = statusString.substring(0, index) + '3' + statusString.substring(index+1);
+			
+		    //console.log('after delete for countString: ' + countString);
+			//console.log('after delete for statusString: ' + statusString);
+	        //localStorage.setItem('inactivePlanCount', countString);
+			//localStorage.setItem('inactivePlanRetrieved', statusString);
+			$(this).parent().hide();
+			$('.undoIcon').show();
+		} else {
+		    //this is serious if they can somehow reach here.
+			alert('SECURITY FLAW!!!');
+		}
+		
+    });
+	
+	$('.undoIcon').hide();
+	
+	$('#inactiveplanlist').on('click', 'i.undoIcon', function() {
+	    var index = 0;
+	    //var countString = localStorage.getItem('inactivePlanCount');
+		//var statusString = localStorage.getItem('inactivePlanRetrieved');
+		index = countString.indexOf('3');
+		//console.log('before undo for countString: ' + countString);
+		//console.log('before undo for statusString: ' + statusString);
+		//countString = countString.replace(/3/g, '1');
+		//statusString = statusString.replace(/3/g, '1');
+		//console.log('after delete for countString: ' + countString);
+		//console.log('after delete for statusString: ' + statusString);
+	    //localStorage.setItem('inactivePlanCount', countString);
+		//localStorage.setItem('inactivePlanRetrieved', statusString);
+	    $('#inactiveplanlist li').eq(index).children('div').show();
+		$(this).hide();
+	});
+	
+	$('.degreeplanblock').on('click', 'button.propertiesButton', function() {
+        //alert('properties');
+		var inactivePlans = JSON.parse(localStorage.getItem('inactivePlanArray'));
+		$('.modal, .modalcontent').addClass('fadeIn');
+		var properties, timePref, propertiesValue, liElement;
+		var index = 0;
+		var inactivePlanName = $(this).siblings('a').text();
+		while (inactivePlans[index].school + ' - ' + inactivePlans[index].major != inactivePlanName) { index++;}//
+		$('activeplantitle').val(inactivePlanName);
+		$('propertieslist').append(liElement);
+        for (properties in inactivePlans[index]) {
+		    propertiesValue = inactivePlans[index][properties];
+		    if (typeof inactivePlans[index][properties] == 'object') {
+			    propertiesValue = '';
+			    for (timePref in inactivePlans[index][properties]) {
+				    propertiesValue+= inactivePlans[index][properties][timePref] + ', '
+				}
+			}
+		    liElement = $('<li></li>').text('<b>' + properties + ':</b> ' + propertiesValue);
+			$('propertieslist').append(liElement);
+		}
+    });
+	
+	var prevInactivePlanName = '';
+	$('#activeplantitle').focus(function() {
+	    $(this).css('border', '0.1em solid rgb(184, 0, 0)');
+		$(this).css('cursor', 'text');
+		prevInactivePlanName = $(this).val();
+	});
+	
+	$('#activeplantitle').blur(function() {
+	    $(this).css('border', 'none');
+		$(this).css('cursor', 'pointer');
+		var inactivePlans = JSON.parse(localStorage.getItem('inactivePlanArray'));
+		var index = 0;
+		while (inactivePlans[index].school + ' - ' + inactivePlans[index].major != prevInactivePlanName) { index++;}
+		inactivePlans[index].inactiveplanname = $(this).val();
+	});
+    
+    $('.modal').on('click', function(event) {
+	    if (!$(event.target).closest('.modalcontent').length) {
+		    $('.modal, .modalcontent').removeClass('fadeIn');
+
+		}
+	});
+
+});
+
+
+
+
+</script>
+</div>
+</body>
+</html>

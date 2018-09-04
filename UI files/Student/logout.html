@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Virtual Academic Student Logout Page</title>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+<link rel="stylesheet" href="styles.css" >
+
+<script src="jquery-3.2.1.js"></script>
+<style>
+.logoutMessage {
+  font-size: 1em;
+  position: relative;
+  height: 100%;
+}
+
+.check {
+  position: absolute;
+  top: 31%;
+  left: 30%;
+  color: rgb(0, 168, 0);
+  font-size: 1.5em;
+}
+
+#message {
+  text-align: center;
+  padding: 10em 0;
+  font-size: 1.2em;
+}
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <h1>EVERETT</h1>
+    <h3>COMMUNITY COLLEGE</h3>
+  </div>
+  
+  <div class='main clearfix'>
+    <div class='logoutMessage'>
+      <p id='message'> <i class='check fa fa-check'></i> You have successfully logged out of Virtual Academic Advisor!</p>
+	</div>
+  </div>
+
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+
+</div>
+
+<script>
+$(document).ready(function() {
+	sessionStorage.clear();
+});
+</script>
+</body>
+</html>

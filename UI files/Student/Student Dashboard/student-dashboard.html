@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<title>Virtual Academic Advisor Student Dashboard Page</title>
+<meta charset='UTF-8' >
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='../styles.css'>
+<link rel='stylesheet' href='student-dashboard.css'>
+
+<script src='../jquery-3.2.1.js'></script>
+<script src='../vaajavascript.js'></script>
+<script src='student-dashboard.js'></script>
+
+<style> 	
+#dropdownbox {
+  display: inline-block;
+  font-size: 1em;
+  margin-left: 13.5em;
+  margin-bottom: 1em;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(150, 150, 150);
+  border-radius: 10px;
+  background-color: rgb(150, 150, 150);
+  padding: 1em;
+  width: 80%;
+}
+
+.dropdownbutton {
+  background-color: rgb(184, 0, 0);
+  color: white;
+  margin-left: 1em;
+  padding: 0.5em 2em;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdownbutton:hover, .dropdownbutton:focus {
+  background-color: rgb(114, 0, 0);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 23.5%;
+  background-color: rgb(210, 210, 210);
+  overflow: auto;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  width: auto;
+}
+
+#degree-plans-item {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#degree-plans-item li{
+  border-bottom: 0.1em solid rgb(130, 130, 130);
+}
+
+#degree-plans-item li:last-child{
+  border-bottom: none;
+}
+
+#degree-plans-item a {
+  padding: 0.5em 1em;
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+
+#degree-plans-item a:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.audit-button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  text-align: center;
+  display: block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+  margin: 1em auto 0;
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.audit-button:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.audit-button:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+
+#progressbar {
+  width: 50%;
+  background-color: rgb(180, 180, 180);
+  display: inline-block;
+  
+}
+
+#fill {
+  width: 5%;
+  text-align: center;
+  background-color: rgb(184, 0, 0);
+  color: white;
+  height: 2em;
+  line-height: 2em;
+}
+
+#progress-title {
+  font-size: 1.2em;
+  margin: 0 0 1em 0;
+}
+
+.progress-button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  text-align: center;
+  float: right;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.progress-button:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.progress-button:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+
+#dash-line {
+  margin: 1em 0;
+  border-bottom: 0.1em dashed rgb(150, 150, 150);
+}
+
+.courselist-heading {
+  list-style-type: none;
+  height: 1.5em;
+  margin: 0 0 1em 0;
+  padding: 0;
+  border-bottom: 0.1em solid rgb(150, 150, 150);
+}
+
+.courselist-heading li {
+  float: left;
+  width: 11%;
+  padding: 0 1em;
+  text-align: center;
+}
+
+.courselist-heading li:first-child {
+  width: 20%;
+  text-align: left;
+}
+
+.courselist-heading li:nth-child(2) {
+  width: 13%;
+}
+
+.courserow {
+  list-style-type: none;
+  height: 3em;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1em;
+  border: 0.1em solid rgb(150, 150, 150);
+  background-color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+
+.courserow li {
+  float: left;
+  width: 11%;
+  padding: 1em 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.courserow li:first-child {
+  width: 20%;
+  text-align: left;
+}
+
+.courserow li:nth-child(2) {
+  width: 13%;
+}
+
+.courseCompleted {
+  
+}
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <div class='toplink'>
+      <ul>
+	    <li><a id='account' href='../account.html'>Hello, Test Student!</a></li>
+		<li><a id='help' href='../help.html'>Help</a></li>
+        <li><a id='logout' href='../logout.html'>Log Out</a></li>
+      </ul>
+    </div>
+    <h1>EVERETT</h1>
+    <h3>COMMUNITY COLLEGE</h3>
+  </div>
+  
+  <div class='nav clearfix'>
+    <ul>
+      <li><a id='studentdashboard' href='student-dashboard.html'>Student Dashboard</a></li>
+	  <li><a id='degreeplans' href='../Degree%20Plans/degree-plans.html'>Degree Plans</a></li>
+    </ul>
+  </div>
+  
+  <div class='main clearfix'>
+    <div class='heading'>
+      <h1 id='mainheader'>Dashboard</h1>
+      <h5 id='path'>Dashboard</h5>
+	</div>
+	<h2 id='yourplan'>Your Degree Plan</h2>
+	<div class='degreeplanblock'>
+	  <!--
+	  Uncomment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	  Comment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	  -->
+	  <h2 id="major"><a id='activedegreelink' href='#'>University of Washington Bothell - Computer Science</a></h2>
+	  <h4 id='transferringcollege'>Transferring College: University of Washington Bothell</h4>
+	  <h4 id='intendedmajor'>Intended Major: Computer Science</h4>
+	  <h4 id='degree'>Degree: Associate in Arts and Sciences - Direct Transfer</h4>
+	  <!--
+	  Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	  Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	  <h2 id="major"></h2>
+	  <h4 id='transferringcollege'></h4>
+	  <h4 id='intendedmajor'></h4>
+	  <h4 id='degree'></h4>
+	  -->
+	  <h2 id='planTitle'></h2>
+	  <p id='direction'><b></b></p>
+	  <ul id='directionlist'>
+	  </ul>
+	</div>
+	
+	<div id='dropdownbox'>
+	  <label><b>Degree plans:</b></label>
+	  <button class='dropdownbutton' name='degree-plans'>Select a degree plan</button>
+      <div class='dropdown-content'>
+	    <ul id='degree-plans-item'>
+		  <!--
+	      Uncomment these codes (li tag) if testing locally without connected to the backend (i.e. not making AJAX calls)
+	      Comment these codes (li tag) if testing locally and connected to the backend (i.e. making AJAX calls)
+	      -->
+		  <li><a href='#'>University of Washington Bothell - Computer Science (Active)</a></li>
+		  <li><a href='#'>University of Washington Bothell - Business Administration (Inactive)</a></li>
+		  <li><a href='#'>University of Washington Bothell - Art (Inactive)</a></li>
+		  <li><a href='#'>University of Washington Bothell - Mathematics (Inactive)</a></li>
+		</ul>
+      </div>
+	  <button class='audit-button'>Audit</button>
+	</div>
+	
+	<div id='currentdegreeinfo' class='degreeplanblock'>
+	  <button id='edit-progress' class='progress-button'>Edit Progress</button>
+	  <!--
+	  Uncomment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	  Comment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	  -->
+	  <h2 id='progress-title'>University of Washington (Associate of Science - Pre-Engineering: Aeronautics & Astronautics Engineering)</h2>
+	  <!--
+	  Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	  Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	  <h2 id='progress-title'></h2>
+	  -->
+
+      <div id='dash-line'></div>	
+      <ul class='courselist-heading'>
+	    <!--
+	    Uncomment these codes (li tag) if testing locally without connected to the backend (i.e. not making AJAX calls)
+	    Comment these codes (li tag) if testing locally and connected to the backend (i.e. making AJAX calls)
+	    -->
+	    <li>Course Name</li>
+		<li>Course Number</li>
+		<li>Credits</li>
+		<li>Types</li>
+		<li>Grade</li>
+		<li>Quarter</li>
+		<li>Year</li>
+		<li>Status</li>
+      </ul>
+	  <div id='courselist'>
+	    <!--
+	    Uncomment these codes (ul tag) if testing locally without connected to the backend (i.e. not making AJAX calls)
+	    Comment these codes (ul tag) if testing locally and connected to the backend (i.e. making AJAX calls)
+	    -->
+	    <ul class='courserow'>
+	     <li>Technical Writing</li>
+		  <li>ENGL& 230</li>
+		  <li>3.0</li>
+		  <li>C</li>
+		  <li>3.7</li>
+		  <li>Winter</li>
+		  <li>2017</li>
+		  <li><i class="courseCompleted fa fa-check" style='color: green;'></i></li>
+        </ul>	
+		<ul class='courserow'>
+	     <li>Introduction to Engineering 2: Computing and Design</li>
+		  <li>ENGR 121</li>
+		  <li>5.0</li>
+		  <li>TE</li>
+		  <li>3.6</li>
+		  <li>Winter</li>
+		  <li>2017</li>
+		  <li><i class="courseCompleted fa fa-check" style='color: green;'></i></li>
+        </ul>	
+		<ul class='courserow'>
+	     <li>Thermodynamics</li>
+		  <li>ENGR& 224</li>
+		  <li>5.0</li>
+		  <li>NS</li>
+		  <li>-</li>
+		  <li>-</li>
+		  <li>-</li>
+		  <li><i class="courseCompleted fa fa-check" style='color: green;'></i></li>
+        </ul>	
+		<ul class='courserow'>
+	     <li>Applied Numerical Methods</li>
+		  <li>ENGR 240</li>
+		  <li>5.0</li>
+		  <li>NS</li>
+		  <li>-</li>
+		  <li>-</li>
+		  <li>-</li>
+		  <li><i class="courseCompleted fa fa-check" style='color: green;'></i></li>
+        </ul>	
+		<ul class='courserow'>
+	     <li>Calculus 4</li>
+		  <li>MATH& 264</li>
+		  <li>5.0</li>
+		  <li>Q, NS</li>
+		  <li>-</li>
+		  <li>-</li>
+		  <li>-</li>
+		  <li><i class="courseCompleted fa fa-check" style='color: red;'></i></li>
+        </ul>	
+	  </div>
+	</div>
+  </div>
+
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+
+</div>
+<script>
+var productionURL = 'http://localhost:5000/';
+$(document).ready(function() {
+    /*
+	Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+    vaaDashSetActivePlanInfo();
+	$('#currentdegreeinfo').hide();
+	*/
+	$('#dropdownbox').on('click', '.dropdownbutton', function() {
+	    $(this).siblings('.dropdown-content').css('display', 'block');
+	});
+	$('#dropdownbox').on('click', '.dropdown-content a', function(eventObject) {
+	    eventObject.preventDefault();
+	    $(this).parents('.dropdown-content').css('display', 'none');
+		$(this).parents('.dropdown-content').prev('.dropdownbutton').text($(this).text());
+	});
+	$(document).on('click', function(event) {
+	    if (!(event.target.matches('.dropdownbutton'))) {
+		    $('.dropdown-content').css('display', 'none');
+		}
+	});
+	
+	/*
+	Uncomment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	Comment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	*/
+	vaaLocalFillProgressBar(80);
+	
+	$('#activedegreelink').click(function(eventObject) {
+	    /*
+	    Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	    Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+        var ajaxStatusObject = JSON.parse(sessionStorage.getItem('recentAjaxStatusProperties'));
+	    var sessionAjaxStatusObject = JSON.parse(sessionStorage.getItem('sessionAjaxStatusProperties'));
+		var activePlanInfo = JSON.parse(sessionStorage.getItem('studentActivePlanInfo'));
+		
+		if(sessionAjaxStatusObject['retrieveActivePlanReady'] == undefined) {
+		    ajaxStatusObject['retrieveActivePlanReady'] = '0';
+			sessionAjaxStatusObject['retrieveActivePlanReady'] = '0';
+			sessionStorage.setItem('recentAjaxStatusProperties', JSON.stringify(ajaxStatusObject));
+		    sessionStorage.setItem('sessionAjaxStatusProperties', JSON.stringify(sessionAjaxStatusObject));
+			
+			sessionStorage.setItem('nextWebPage', '../Degree%20Plans/Active%20Degree%20Plan/active-degree-table.html');
+			apiURL = productionURL + 'api/Vsa/';
+	        apiURL += activePlanInfo.planId;
+			$.ajax({
+	            url: apiURL,
+	            type: 'GET',
+	            dataType: 'json',
+	            success: function(jsonText) {
+				    //only checking if array of objects (JSON) was passed successfully
+		            console.log('This is the active plan: ' + jsonText);
+					sessionStorage.setItem('activePlanArray', JSON.stringify(jsonText));
+				    ajaxStatusObject[retrieveActivePlanReady] = '1';  //1 means successfully retrieved
+				    //saving it locally
+				    sessionStorage.setItem('recentAjaxStatusProperties', JSON.stringify(ajaxStatusObject));
+	            },
+	            error: function() {
+	                console.log('AJAX failed');
+	            }
+	        })
+			location.href = 'loading.html';  // redirect to loading page
+		} else if (sessionAjaxStatusObject[retrieveActivePlanReady] == '0') {
+		    console.log('this should not be triggered');
+		} else if (sessionAjaxStatusObject[retrieveActivePlanReady] == '1') {
+		    location.href = '../Degree%20Plans/Active%20Degree%20Plan/active-degree-table.html';  // redirect
+		}*/
+		
+		/*
+	    Uncomment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	    Comment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	    */
+		location.href = '../Degree%20Plans/Active%20Degree%20Plan/active-degree-table.html';
+    });
+	
+	$('.audit-button').click(function() {
+	    /*
+	    Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	    Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	    var ajaxStatusObject = JSON.parse(sessionStorage.getItem('recentAjaxStatusProperties'));
+	    var sessionAjaxStatusObject = JSON.parse(sessionStorage.getItem('sessionAjaxStatusProperties'));
+		var activePlanInfo = JSON.parse(sessionStorage.getItem('studentActivePlanInfo'));
+		var degreePlanName = $(this).siblings('.dropdownbutton').text();
+		degreePlanName = degreePlanName.replace(' ', '');
+		degreePlanStatus = 'retrieve' + degreePlanName;
+		
+		if (sessionAjaxStatusObject[degreePlanStatus] == undefined ) {
+		    ajaxStatusObject[degreePlanStatus] = '0';
+		    sessionAjaxStatusObject[degreePlanStatus] = '0';
+		    sessionStorage.setItem('recentAjaxStatusProperties', JSON.stringify(ajaxStatusObject));
+		    sessionStorage.setItem('sessionAjaxStatusProperties', JSON.stringify(sessionAjaxStatusObject));
+			
+	        apiURL = productionURL + 'api/Vsa/';  //whatever this is going to be
+		    apiURL += studentID;
+		    $.ajax({
+		        url: apiURL,
+		        type: 'GET',
+		        dataType: 'json',
+		        success: function(jsonText) {
+			        //only checking if array of objects (JSON) was passed successfully
+			        console.log("This is student's degree plan data: " + jsonText);
+				    sessionStorage.setItem(degreePlanName, JSON.stringify(jsonText));
+				    ajaxStatusObject[degreePlanStatus] = '1';  //1 means successfully retrieved
+				    //saving it locally
+				    sessionStorage.setItem('recentAjaxStatusProperties', JSON.stringify(ajaxStatusObject));
+					vaaDashSetDegreeTitle();
+					vaaDashSetDegreeHeadings(degreePlanName);
+					vaaDashSetDegreeRows(degreePlanName);
+					$('#currentdegreeinfo').show();
+					vaaFillProgressBar(degreePlanName);
+		        },
+		        error: function() {
+		            console.log('AJAX failed');
+		        }
+		    })
+		} else if (sessionAjaxStatusObject[degreePlanStatus] == '0') {
+		    console.log('this should not be triggered');
+		} else if (sessionAjaxStatusObject[degreePlanStatus] == '1') {
+		    vaaDashSetDegreeTitle();
+			vaaDashSetDegreeHeadings(degreePlanName);
+			vaaDashSetDegreeRows(degreePlanName);
+			$('#currentdegreeinfo').show();
+			vaaFillProgressBar(degreePlanName);
+		}*/
+	});
+	
+	$('#edit-progress').click(function() {
+	    /*
+	    Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	    Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+		
+	    var degreePlanName = $(this).parents('#currentdegreeinfo').siblings('#dropdownbox').children('.dropdownbutton').text();
+		var degreePlanSavedData = degreePlanName.replace(' ', '');
+		sessionStorage.setItem('preSelectedDegreeName', degreePlanName);
+		sessionStorage.setItem('preSelectedDegreeSavedData', degreePlanSavedData);
+		location.href = '../Edit%20Progress/edit-progress.html';*/
+	});
+});
+
+$('#exploreplans').click(function(eventObject) {
+    console.log('explore plans has been clicked');
+	if (Number(localStorage.getItem('parameterSetRetrieved')) == 0) {
+	    console.log('parameter set has not been retrieved before');
+		eventObject.preventDefault();
+		//What would be the url here???
+		//apiURL = 'http://localhost:5000/api/Vsa/';
+		//apiURL += localStorage.getItem('jsonActivePlanID');
+	    /*$.ajax({
+	        url: apiURL,
+	        type: 'GET',
+	        dataType: 'json',
+	        success: function(jsonText) {
+		        console.log('These are the inactive plan names: ' + jsonText);
+			    localStorage.setItem('activePlanArray', JSON.stringify(jsonText));
+			    localStorage.setItem('activePlanRetrieved', '1'); //set it so ajax call will not be called again.
+			    location.href = '../Degree%20Plans/Active%20Degree%20Plan/active-degree-table.html';
+	        },
+	        error: function() {
+	            console.log('AJAX failed');
+	        }
+	    }) */
+	}
+	console.log('parameter set has been retrieved before');
+});
+
+/*$('#account').click(function(eventObject) {
+    console.log('account has been clicked');
+	if (Number(localStorage.getItem('???')) == 0) {
+	    console.log('??? has not been retrieved before');
+		eventObject.preventDefault();
+		//What would be the url here???
+		//apiURL = 'http://localhost:5000/api/Vsa/';
+		//apiURL += localStorage.getItem('jsonActivePlanID');
+	    $.ajax({
+	        url: apiURL,
+	        type: 'GET',
+	        dataType: 'json',
+	        success: function(jsonText) {
+		        console.log('These are the inactive plan names: ' + jsonText);
+			    localStorage.setItem('activePlanArray', JSON.stringify(jsonText));
+			    localStorage.setItem('activePlanRetrieved', '1'); //set it so ajax call will not be called again.
+			    location.href = '../Degree%20Plans/Active%20Degree%20Plan/active-degree-table.html';
+	        },
+	        error: function() {
+	            console.log('AJAX failed');
+	        }
+	    }) 
+	}
+	console.log('??? has been retrieved before');
+}*/
+
+$('#help').click(function(eventObject) {
+    console.log('help has been clicked');
+	if (Number(localStorage.getItem('contactInfoRetrieved')) == 0) {
+	    console.log('contact info has not been retrieved before');
+		eventObject.preventDefault();
+		//What would be the url here???
+		//apiURL = 'http://localhost:5000/api/Vsa/';
+		//apiURL += localStorage.getItem('jsonActivePlanID');
+	    /*$.ajax({
+	        url: apiURL,
+	        type: 'GET',
+	        dataType: 'json',
+	        success: function(jsonText) {
+		        console.log('These are the inactive plan names: ' + jsonText);
+			    localStorage.setItem('activePlanArray', JSON.stringify(jsonText));
+			    localStorage.setItem('activePlanRetrieved', '1'); //set it so ajax call will not be called again.
+			    location.href = '../Degree%20Plans/Active%20Degree%20Plan/active-degree-table.html';
+	        },
+	        error: function() {
+	            console.log('AJAX failed');
+	        }
+	    }) */
+	}
+	console.log('contact info has been retrieved before');
+});
+
+$('#logout').click(function(eventObject) {
+    console.log('logout has been clicked');
+	eventObject.preventDefault();
+	//What would be the url here???
+	//apiURL = 'http://localhost:5000/api/Vsa/';
+	//apiURL += localStorage.getItem('jsonActivePlanID');
+	/*$.ajax({
+	    url: apiURL,
+	    type: 'GET',
+	    dataType: 'json',
+	    success: function(jsonText) {
+		    console.log('These are the inactive plan names: ' + jsonText);
+			localStorage.setItem('activePlanArray', JSON.stringify(jsonText));
+			localStorage.setItem('activePlanRetrieved', '1'); //set it so ajax call will not be called again.
+			location.href = '../Degree%20Plans/Active%20Degree%20Plan/active-degree-table.html';
+	    },
+	    error: function() {
+	        console.log('AJAX failed');
+	    }
+	}) */
+});
+
+</script>
+</body>
+</html>

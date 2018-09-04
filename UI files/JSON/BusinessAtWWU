@@ -1,0 +1,142 @@
+[
+  {
+    "planId": 2482,
+    "courseNumber": "BUS& 101",
+    "courseID": 253,
+    "quarter": "Fall",
+    "year": 2016
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ESL 097",
+    "courseID": 550,
+    "quarter": "Fall",
+    "year": 2016
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ACCT 110",
+    "courseID": 25,
+    "quarter": "Fall",
+    "year": 2017
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ENGL& 101",
+    "courseID": 490,
+    "quarter": "Fall",
+    "year": 2017
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ECON& 202",
+    "courseID": 401,
+    "quarter": "Winter",
+    "year": 2017
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ENGL 097",
+    "courseID": 451,
+    "quarter": "Winter",
+    "year": 2017
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "AEP 098",
+    "courseID": 42,
+    "quarter": "Spring",
+    "year": 2017
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ECON& 201",
+    "courseID": 400,
+    "quarter": "Spring",
+    "year": 2017
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ENGL 098",
+    "courseID": 452,
+    "quarter": "Summer",
+    "year": 2017
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "MATH& 148",
+    "courseID": 920,
+    "quarter": "Fall",
+    "year": 2018
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ACCT& 201",
+    "courseID": 31,
+    "quarter": "Winter",
+    "year": 2018
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ENGL& 102",
+    "courseID": 492,
+    "quarter": "Spring",
+    "year": 2018
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "BUS& 201",
+    "courseID": 254,
+    "quarter": "Spring",
+    "year": 2018
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "MATH 138",
+    "courseID": 1401,
+    "quarter": "Summer",
+    "year": 2018
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ACCT& 203",
+    "courseID": 33,
+    "quarter": "Fall",
+    "year": 2019
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "MATH 080",
+    "courseID": 897,
+    "quarter": "Winter",
+    "year": 2019
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "ACCT& 202",
+    "courseID": 32,
+    "quarter": "Spring",
+    "year": 2019
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "MATH 091",
+    "courseID": 901,
+    "quarter": "Spring",
+    "year": 2019
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "MATH 092",
+    "courseID": 902,
+    "quarter": "Summer",
+    "year": 2019
+  },
+  {
+    "planId": 2482,
+    "courseNumber": "MATH& 146",
+    "courseID": 919,
+    "quarter": "Summer",
+    "year": 2020
+  }
+]

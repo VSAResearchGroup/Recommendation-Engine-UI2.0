@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Virtual Academic Advisor Login Page</title>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+<link rel="stylesheet" href="styles.css" >
+
+<script src="jquery-3.2.1.js"></script>
+<script src="login.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+  background-color: #CC1400;
+}
+
+.loginbox {
+  border: 2px solid rgb(150, 150, 150);
+  position: relative;
+  width: 25%;
+  top: 40%;
+  left: 35%;
+  padding: 1em 1em;
+  background: white;
+}
+
+#iconPicture{
+		color:#CC1400; 
+		
+		
+}
+
+#loginbutton {
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	background: #CC1400;
+	width: 95%;
+	margin-top: 10px;
+	white-space: nowrap;
+	cursor: pointer;
+	border: none;
+}
+
+input[type=text]{
+		width:83%;
+		border:2px solid;
+		margin:4px 0;
+		outline:none;
+		padding:8px;
+		
+}
+#welcome{
+	margin-bottom: 15px; 
+	color: white; 
+	position: absolute; 
+	left: 35%; 
+	top: 30%;
+}
+
+</style>
+</head>
+<body>
+<h2 id = "welcome">Welcome to Advisor Login</h2>
+<div class='loginbox'>
+
+   <i id="iconPicture" class="fa fa-user fa-lg fa-fw"></i>
+  <input id='advID' type='text' placeholder='Advisor ID'></input>
+  <br>
+  <i id="iconPicture" class="fa fa-lock fa-lg fa-fw" ></i>
+  <input id='pin' type='text' placeholder='Password'></input><br>
+  
+    <button id='loginbutton'>Log In</button>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

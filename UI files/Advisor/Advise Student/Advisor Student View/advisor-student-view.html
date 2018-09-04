@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<title>Virtual Academic Advisor Advisor Dashboard Page</title>
+<meta charset='UTF-8' >
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='../../styles.css'>
+<link rel='stylesheet' href='advisor-student-view.css'>
+
+<script src='../../jquery-3.2.1.js'></script>
+<script src='advisor-student-view.js'></script>
+
+<style>
+#headings { 
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.containerbox {
+  background-color: rgb(150, 150, 150);
+  height: auto;
+  overflow:auto;
+  margin-bottom: 1em;
+}
+
+.degreeplanbox {
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1em 1em;
+  width: 70%;
+}
+
+.plan-option {
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1em 1em;
+  width: 25%;
+  float: right;
+}
+
+#major {
+  font-size: 1.5em;
+}
+
+.option-button {
+  font-size: 1em;
+  padding: 0.25em 1em;
+  text-align: center;
+  width: 160px;
+  height: 40px;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+  margin: .75em .75em;
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.option-button:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.option-button:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <div class='toplink'>
+      <ul>
+	    <li><a id='account' href='../account.html'>Hello, Test Advisor!</a></li>
+		<li><a id='help' href='../help.html'>Help</a></li>
+        <li><a id='logout' href='../logout.html'>Log Out</a></li>
+      </ul>
+    </div>
+    <h1>EVERETT</h1>
+    <h3>COMMUNITY COLLEGE</h3>
+  </div>
+  
+  <div class='nav clearfix'>
+    <ul>
+      <li><a id='advisordashboard' href='../../Advisor%20Dashboard/advisor-dashboard.html'>Advisor Dashboard</a></li>
+	  <li><a id='sitesetting' href='#'>Site Setting</a></li>
+    </ul>
+  </div>
+  
+  <div class='main clearfix'>
+    <div class='heading'>
+      <h1 id='mainheader'></h1>
+      <h5 id='path'>Advisor's student view</h5>
+	</div>
+	
+	<div class='containerbox degreeplanblock'>
+	  <div class='degreeplanbox' style='position: relative;'>
+	    <!--Uncomment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	    Comment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)-->
+		<h2 id='headings'></h2>
+		<h2 id='major'></h2>
+		<h4 id='studentID'></h4>
+		<h4 id='email'></h4>
+	    <h4 id='currentcollege'>Current College: Everett Community College</h4>
+	    <h4 id='transferringcollege'></h4>
+	    <p id='direction'><b></b></p>
+	    <ul id='directionlist'>
+	    </ul>
+		
+	    <!--Uncomment these codes if testing locally without connected to the backend (i.e. not making AJAX calls)
+	    Comment these codes if testing locally and connected to the backend (i.e. making AJAX calls)
+	    <h2 id='headings'>Jaime Lannister's Degree Plan</h2>
+		<h2 id='major'><a id="activedegreelink" href='#'>University of Washington Bothell - Computer Science</a></h2>
+	    <h4 id='currentcollege'>Current College: Everett Community College</h4>
+	    <h4 id='transferringcollege'>Transferring College: University of Washington Bothell</h4>
+	    <h4 id='intendedmajor'>Intended Major: Computer Science</h4>
+	    <h4 id='degree'>Degree: Associate in Arts and Sciences - Direct Transfer</h4>
+	    <h2 id='planTitle'></h2>
+	    <p id='direction'><b></b></p>
+	    <ul id='directionlist'>
+	    </ul>
+		 
+		<!--till here-->
+	  </div>
+	  <div class='plan-option'>
+		<button id ='activePlan' class='option-button' >Active Plan</button>
+	    <button id ='inactivePlan' class='option-button' >Inactive Plans</button>
+		<button id ='newPlan' class='option-button' >Create New Plan</button>
+		<button id = 'studentEdit' class='option-button' >Edit Student</button>
+	  </div>
+    </div>	  
+  </div>
+
+  <div class='footer' style = "margin-top: 1em;">
+    <p>&#169;Everett Community College</p>
+  </div>
+
+</div>
+<script>
+</script>
+</body>
+</html>

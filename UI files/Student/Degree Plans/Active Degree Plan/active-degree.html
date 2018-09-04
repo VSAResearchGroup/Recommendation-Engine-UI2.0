@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Virtual Academic Advisor Active Degree Page</title>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+<link rel="stylesheet" href="../../styles.css" >
+<link rel="stylesheet" href="active-degree.css" >
+
+<script src="../../jquery-3.2.1.js"></script>
+<script src="active-degree.js"></script>
+<style>
+
+.inputbox {
+  float: left;
+  position: absolute;
+  left: 45em;
+  top: 26em;
+}
+
+button {
+  font-size: 1em;
+  border: none;
+  padding: 0.5em 1em;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+}
+
+#searchbutton {
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-top: 1em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+#searchbutton:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+#searchbutton:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+
+#searchinput {
+ 
+}
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <div class='toplink'>
+      <ul>
+        <li><a href='../../logout.html'>Log Out</a></li>
+	    <li><a href='../.../help.html'>Help</a></li>
+	    <li><a href='../../account.html'>Hello, Test Student!</a></li>
+      </ul>
+    </div>
+    <h1>EVERETT</h1>
+    <h3>COMMUNITY COLLEGE</h3>
+  </div>
+  
+  <div class='nav clearfix'>
+    <ul>
+      <li><a href='../../Student%20Dashboard/student-dashboard.html'>Student Dashboard</a></li>
+	  <li><a href='../degree-plans.html'>Degree Plans</a></li>
+	  <li><a href='#'>Explore Plans</a></li>
+    </ul>
+  </div>
+  
+  <div class='main clearfix'>
+    <h1 id='mainheader'>Active Degree Plan</h1>
+    <h5 id='path'>Degree Plans >> Active Degree Plan</h5>
+	<h2 id="major">University of Washington Bothell - Computer Science</h2>
+    <div class="activestatus">
+	  <h4 id="activestatustext">Plan Status:</h4>
+      <ul>
+	    <li><a id="inactive" href="inactive-degree-plan.html">Inactive</a></li>
+	    <li><a id="active" href="active-degree.html">Active</a></li>
+	  </ul>
+    </div>
+    
+    <div class="legend clearfix">
+      <h4 id="legendhead">Legend:</h4>
+      <ul>
+	    <li style='color: rgb(0, 129, 228);'>M: Morning</li><br>
+	    <li style='color: rgb(235, 105, 0);'>A: Afternoon</li><br>
+	    <li style='color: rgb(131, 0, 222);'>E: Evening</li><br>
+	    <li style='color: rgb(0, 155, 207);'>SS: Social Sciences</li><br>
+	    <li style='color: rgb(248, 168, 0);'>H: Humanities</li><br>
+	    <li style='color: rgb(165, 79, 0);'>R: Human Relations</li><br>
+	    <li style='color: rgb(235, 79, 226);'>C: Communication Skills</li><br>
+	    <li style='color: rgb(75, 51, 220);'>Q: Quantitative Skills</li><br>
+	    <li style='color: rgb(75, 204, 62);'>NS: Natural Sciences</li><br>
+	    <li style='color: rgb(99, 99, 99);'>TE: Transfer Electives</li><br>
+	    <li style='color: rgb(101, 151, 29);'>NS-L: Natural Science Lab</li><br>
+	    <li style='color: rgb(213, 5, 92);'>D: Diversity Course</li><br>
+	  </ul>
+    </div>
+	
+	<div class='table clearfix'>
+	  <p id='tableholder'></p>
+	</div>
+	
+    <div class="creditsmet clearfix">
+      <h4>Credit Requirement Met Status</h4>
+	  <i class='refresh fa fa-refresh fa-spin'></i>
+      <ul>
+	    <li style='color: rgb(0, 155, 207);'>SS: Social Sciences: <span>0/15</span> Credits</li><br>
+	    <li style='color: rgb(248, 168, 0);'>H: Humanities: <span>0/15</span> Credits</li><br>
+	    <li style='color: rgb(165, 79, 0);'>R: Human Relations: <span>0</span> Credits</li><br>
+	    <li style='color: rgb(235, 79, 226);'>C: Communication: Skills <span>0/10</span> Credits</li><br>
+	    <li style='color: rgb(75, 51, 220);'>Q: Quantitative: Skills <span>0/5</span> Credits</li><br>
+	    <li style='color: rgb(75, 204, 62);'>NS: Natural Sciences: <span>0/15</span> Credits</li><br>
+	    <li style='color: rgb(99, 99, 99);'>TE: Transfer Electives: <span>0/30</span> Credits</li><br>
+	    <li style='color: rgb(101, 151, 29);'>NS-L: Natural Science Lab: <span>0/5</span> Credits</li><br>
+	    <li style='color: rgb(213, 5, 92);'>D: Diversity Course: <span>0/5</span> Credits</li><br>
+	  </ul>
+	  <i class='check fa fa-check-circle'></i>
+    </div>	
+	
+	<div class='inputbox'>
+	  <input id='searchinput' type='text' value='69'>
+	  <button id='searchbutton'>Search</button>
+	</div>
+	
+  </div>
+
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+
+</div>
+
+<script>
+var initial, table;
+var maxYear = 0;
+var minYear = 0;
+var numOfYear = 0;
+initial = '';
+var activeDegreeTable = new tableObject();  //check table object has indeed been created;
+var statusArray = [];
+var statusObject = {
+	empty: 0,
+	unmodified: 1,
+	dragged: 2,
+	dropped: 3,
+	removed: 4
+};
+var activeplanObj, courseListObjects;
+var apiURL = '';
+    $(document).ready(function(){
+	    $('#searchbutton').click(function() {
+		    apiURL = 'http://localhost:5000/api/Vsa/';
+		    apiURL += $('#searchinput').val();
+		    $.ajax({
+		        url: apiURL,
+			    type: 'GET',
+			    dataType: 'json',
+			    success: function(jsonText) {
+				    initial = '';
+				    constructTable(jsonText, courseListObjects, 5);
+				    initial = displayTable(table, initial, 5);
+				    document.getElementById('tableholder').innerHTML = initial;
+			    },
+			    error: function() {
+			        alert('AJAX FAILED');
+			    }
+		    })
+		});
+	});
+    
+	//courseListObjects = JSON.parse(text3);
+	//constructTable(activePlanObj, courseListObjects, 5);
+	//initial = displayTable(table, initial, 5);
+    //document.getElementById('tableholder').innerHTML = initial;
+	//document.getElementById('table').childNodes[0].nodeValue = null;
+</script>
+</body>
+</html>

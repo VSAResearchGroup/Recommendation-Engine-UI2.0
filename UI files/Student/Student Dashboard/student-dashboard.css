@@ -1,0 +1,10 @@
+#yourplan { 
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: 6.75em; 
+  margin-top: 3em;
+}
+
+#degreeplanblock li {
+  margin-bottom: 1em;
+}

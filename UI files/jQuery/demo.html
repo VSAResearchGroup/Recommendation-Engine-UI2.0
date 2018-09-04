@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>draggable demo</title>
+  <link rel="stylesheet" href="jquery-ui.css">
+  <style> 
+  * {
+    box-sizing: border-box;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1680px;
+	min-width: 920px
+    margin: 0 auto;
+  }
+
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .border {
+  }
+  
+  #topborder {
+    position:absolute;
+    float: top;
+	width: 800px;
+	height: 25px;
+	margin-left: 325px;
+	margin-bottom: 0px;
+	margin-top: 0;
+	background-color: red;
+  }
+  
+  #leftborder {
+    float: left;
+    width: 25px;
+	height: 400px;
+	margin-left: 325px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	background-color: red;
+  }
+  
+  #bottomborder {
+    position:absolute;
+    float: bottom;
+    width: 800px;
+	height: 25px;
+	margin-left: 325px;
+	margin-bottom: 10px;
+	margin-top: 400px;
+	background-color: red;
+  }
+  
+  #rightborder {
+    position:absolute;
+    float: left;
+    width: 25px;
+	height: 400px;
+	margin-left: 1100px;
+	margin-bottom: 0px;
+	margin-top: 0;
+	background-color: red;
+  }
+  
+  .degreetable {
+    float: left;
+	position: absolute;
+    width: 750px;
+	height: 300px;
+	margin-top: 25px;
+    margin-left: 350px;
+    border-collapse: collapse;
+  }
+
+  .degreetable th, td {
+    text-align: center;
+    border-collapse: collapse;
+  }
+
+  .degreetable th {
+    background-color: rgb(184, 0, 0);
+    color: white;
+    border: 1.5px solid black;
+  }
+
+  .degreetable td {
+    height: 50px;
+    width: 12.5%;
+  }
+  
+  .courseblock {
+    border: 1.5px solid rgb(184, 0, 0);
+  }
+  
+  .courseblock:hover {
+    border: 2px solid rgb(184, 0, 0);
+  }
+  
+  .phblock {
+    border: 2px dashed rgb(100, 100, 100);
+  }
+  
+  .phblock:hover {
+    border: 2.5px dashed rgb(66, 66, 66);
+  }
+
+  .cell {
+	height: 95%;
+	width: 95%;
+	margin: auto;
+	padding: 1px 0;
+  }
+  
+  .course {
+    height: 80%;
+	width: 95%;
+	margin: auto;
+	padding: 14px 0 0 0;
+  }
+
+  .placeholder {
+    height: 95%;
+	width: 95%;
+	margin: auto;
+	padding: 1px 0;
+  }
+  
+  .drag
+  </style>
+  <script src="jquery-3.2.1.js"></script>
+  <script src="jquery-ui.js"></script>
+
+</head>
+<body>
+<div class='clearfix container'>
+  <p class='border' id="topborder"></p>
+  <p class='border' id="leftborder"></p>
+
+
+    <table class="degreetable">
+      <tr>
+        <th>2018 Fall</th>
+        <th>2019 Winter</th> 
+        <th>2019 Spring</th>
+	    <th>2019 Summer</th>
+      </tr>
+      <tr>
+        <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">CS& 131</p>
+		  </div>
+		</td>
+        <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">CS& 141</p>
+		  </div>
+		</td> 
+        <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">CS& 143</p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">CHEM& 162</p>
+		  </div>
+		</td>
+      </tr>
+      <tr>
+        <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">MATH& 152</p>
+		  </div>
+	    </td>
+        <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">MATH& 264</p>
+	      </div>
+		</td> 
+        <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">MATH& 163</p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">MATH 260</p>
+		  </div>
+		</td>
+      </tr>
+	  <tr>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">PHYS& 242</p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">CHEM& 161</p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">ENGR& 204</p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course">MATH 261</p>
+		  </div>
+		</td>
+	  </tr>
+	  <tr>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course"></p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course"></p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course"></p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course"></p>
+		  </div>
+		</td>
+	  </tr>
+	  <tr>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course"></p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course"></p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course"></p>
+		  </div>
+		</td>
+	    <td class="courseblock">
+		  <div class="cell">
+		    <p class="course"></p>
+		  </div>
+		</td>
+	  </tr>
+	  <tr>
+	    <td class="phblock">		
+		  <div class="placeholder">
+		  </div>
+		</td>
+	    <td class="phblock">
+		  <div class="placeholder">
+		  </div>
+		</td>
+		<td class="phblock">
+	      <div class="placeholder">
+		  </div>
+		</td>
+	    <td class="phblock">
+          <div class="placeholder">
+		  </div>
+		</td>
+	  </tr>
+	  <tr>
+	    <td class="phblock">		
+		  <div class="placeholder">
+		  </div>
+		</td>
+	    <td class="phblock">
+		  <div class="placeholder">
+		  </div>
+		</td>
+		<td class="phblock">
+	      <div class="placeholder">
+		  </div>
+		</td>
+	    <td class="phblock">
+          <div class="placeholder">
+		  </div>
+		</td>
+	  </tr>
+    </table>
+  <p class='border' id="rightborder"></p>
+  <p class='border' id="bottomborder"></p>
+</div>
+
+<!-- for displaying status on this page to see how drag and other events works-->
+<br>
+<p><b>How drag works, try dragging a cell!</b></p>
+<p id='dragstart'>Drag Start Status</p>
+<p id='dragging'>Drag Status</p>
+<p id='dragstop'>Drag Stop Status</p>
+
+<p><b>How events works, try dragging, let go a cell!</b></p>
+<p id='eventstatus'>Event Status</p>
+<p id='touchborder'></p>
+
+<script>
+var draggedCell, originalPosTop, originalPosLeft, originalPosBottom, originalPosRight;
+var currentPosTop, currentPosLeft, currentPosBottom, currentPosRight;
+var inside, outside, dragging, onBorder, border;
+
+<!-- inside are by default true and vice versa because cells are inside to begin with-->
+inside = true;
+outside = false;
+dragging = false;
+onBorder = false;
+
+var initialPos = true;
+var table = $('.degreetable');
+
+<!-- tablePos = table.eq(0).offset();
+<!-- tablePosBottom = tablePos.top + $('.degreetable').height();
+<!-- tablePosRight = tablePos.left + $('.degreetable').width();
+
+<!-- hover: aka mouseenter and mouseleave functions
+border = $('.border');
+border.hover(function() {
+    document.getElementById('eventstatus').innerHTML = "Enter the Table";
+	document.getElementById('touchborder').innerHTML = "Touch the border!";
+	outside = false;
+},
+function() {
+    document.getElementById('eventstatus').innerHTML = "Left the Table";
+	outside = true;
+});
+
+
+var dragStartCount = 0;
+var dragCount = 0;
+var dragStopCount = 0;
+$('.cell').draggable({
+    create: function(event, ui) {
+	    
+	    
+	},
+    start: function(event, ui) {
+		dragStartCount++;
+	    document.getElementById('dragstart').innerHTML = "drag start count: " + dragStartCount;
+	    draggedCell = $(this);
+	    draggedCell.css({'z-index': '1', 'border': '1.5px solid rgb(184, 0, 0)',});
+		if(initialPos) {
+		    originalPosTop = ui.offset.top;
+		    originalPosLeft = ui.offset.left;
+		    originalPosBottom = ui.offset.top + draggedCell.height();
+		    originalPosRight = ui.offset.left + draggedCell.width();
+			initialPos = false;
+		}
+
+		
+	},
+	drag: function(event, ui) {
+	    dragCount++;
+	    document.getElementById('dragging').innerHTML = "dragging count: " + dragCount;
+		draggedCell.mouseup(function(){
+	        if (outside) {
+			    ui.position.top = originalPosTop;
+		        ui.position.left = originalPosLeft;
+			}
+		});
+		
+	},
+	stop: function(event, ui) {
+	    dragStopCount++;
+	    document.getElementById('dragstop').innerHTML = "drag stop count: " + dragStopCount;
+		currentPosTop = ui.offset.top;
+		currentPosLeft = ui.offset.left;
+		currentPosBottom = ui.offset.top + draggedCell.height();
+		currentPosRight = ui.offset.left + draggedCell.width();
+		draggedCell.mouseup(function(){
+	        if (originalPosTop < tablePos.top || originalPosLeft < tablePos.left || originalPosBottom > tablePosBottom || originalPosRight > tablePosRight) {
+	    
+	        }
+        });
+	} 
+});
+
+$('.cell').droppable({
+    drop: function(event, ui) {
+	    draggedCell.css({'border': '', });
+		initialPos = true;
+		alert("Dropped!");
+	},
+	over: function(event, ui) {
+	    
+	},
+});
+
+$('.cell').sortable({
+    
+    update: function(event, ui) {
+	    <!--update the js array -->
+	},
+});
+
+$('.placeholder').draggable({
+    start: function(event, ui) {
+	    draggedCell = $(this);
+	    draggedCell.css({'z-index': '1', 'border': '1.5px solid rgb(184, 0, 0)',});
+	},
+});
+
+$('.placeholder').droppable({
+    drop: function(event, ui) {
+	    draggedCell.css({'border': '', });
+	},
+});
+
+</script>
+ 
+</body>
+</html>

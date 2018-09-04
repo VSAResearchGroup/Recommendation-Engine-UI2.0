@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Virtual Academic Advisor Advise Student Active Degree Page</title>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+<link rel="stylesheet" href="../../styles.css" >
+<link rel="stylesheet" href="advise-degree-plans.css" >
+<script src="redips-drag-min.js"></script>
+
+<script src="../../jquery-3.2.1.js"></script>
+<script src="advise-degree-plans.js"></script>
+
+<style>
+.panel {
+  font-size: 1em;
+  margin: 0;
+  margin-left: 5em;
+  margin-right: 5em;
+  border: 1px solid black;
+  position:relative;
+  background-color: rgb(150, 150, 150);
+}
+
+.previouspage {
+  font-size: 1em;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  margin: 0;
+}
+
+.previouspage i {
+  position: absolute;
+  top: 0.35em;
+  left: 0.3em;
+}
+
+.previouspage button {
+  margin: 0;
+}
+
+.button {
+  font-size: 1em;
+  border: none;
+  padding: 0.5em 2em;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+}
+
+.backbutton {
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.backbutton:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.backbutton:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+
+.sectionheading {
+  background-color: rgb(184, 0, 0);
+  color: white;
+  border: 1px solid black;
+  padding: 0.2em 1em;
+  margin: 0;
+}
+
+.legend {
+  font-size: 1em;
+  position: absolute;
+  top: 5em;
+  left: 1em;
+  width: 14em;
+}
+
+.legend ul {
+  list-style-type: none;
+  background-color: rgb(213, 213, 213);
+  margin: 0;
+  padding: 0.2em 1em;
+  border: 1px solid black;
+  border-top: none;
+}
+
+.legend li {
+  display: inline-block;
+  padding: 0.1em 0;
+}
+
+.summary {
+  font-size: 1em;
+  position: absolute;
+  top: 28em;
+  left: 1em;
+  width: 14em;
+  background-color: rgb(213, 213, 213);
+}
+
+.summary p {
+  border: 1px solid black;
+  border-top: none;
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+.comments {
+  font-size: 1em;
+  position: absolute;
+  top: 35.5em;
+  left: 1em;
+  width: 14em;
+  background-color: rgb(213, 213, 213);
+}
+
+.comments textarea {
+  outline: none;
+  min-width: 100%;
+  max-width: 100%;
+  border: 1px solid black;
+  border-top: none;
+  background-color: rgb(213, 213, 213);
+}
+
+.degreeplan {
+  font-size: 1em;
+  margin-left: 18em;
+  margin-top: 5em;
+  width: 60%;
+}
+
+.degreeplan h2 {
+  color: rgb(184, 0, 0);
+  font-size: 2em;
+}
+
+.degreetable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.degreetable, td, th {
+  border: 1px solid black;
+}
+
+.degreetable th {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.degreetable td {
+  padding: 0.5em 1em;
+  height: 3em;
+}
+
+.cell {
+  border: 1.5px solid rgb(184, 0, 0);
+   background-color: rgb(255, 255, 255);
+}
+
+.redips-drag {
+   background-color: rgb(255, 255, 255);
+}
+
+.cell:hover {
+  border: 2px solid rgb(184, 0, 0);
+}
+
+.placeholder {
+  border: 2px dashed rgb(100, 100, 100);
+  background-color: rgb(200, 200, 200);
+}
+
+.placeholder:hover {
+  border: 2.5px dashed rgb(66, 66, 66);
+}
+
+#changesapproved {
+  margin-left: 58.5em;
+}
+
+.buttons {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.savePlan {
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.savePlan:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.savePlan:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+
+.setPlanAsActive {
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.setPlanAsActive:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.setPlanAsActive:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+
+.rating {
+  font-size: 1em;
+  position: absolute;
+  top: 5em;
+  right: 1em;
+  width: 14em;
+  background-color: rgb(213, 213, 213);
+}
+
+.stars {
+  text-align: center;
+  padding: 1em 0;
+}
+
+.star {
+  color: rgb(255, 198, 0);
+  font-size: 2em;
+  margin: 0 0.1em;
+}
+
+.levelofmodification {
+  font-size: 1em;
+  position: absolute;
+  top: 18em;
+  right: 1em;
+  width: 14em;
+  background-color: rgb(213, 213, 213);
+}
+
+.creditsmet {
+  font-size: 1em;
+  position: absolute;
+  top: 30em;
+  right: 1em;
+  width: 14em;
+}
+
+.creditsmet h4 {
+  background-color: rgb(184, 0, 0);
+  color: white;
+  border: 1px solid black;
+  padding: 0.2em 1em;
+  margin: 0;
+}
+
+.creditsmet ul {
+  list-style-type: none;
+  background-color: rgb(213, 213, 213);
+  margin: 0;
+  padding: 0.2em 1em;
+  border: 1px solid black;
+  border-top: none;
+}
+
+.creditsmet li {
+  display: inline-block;
+  padding: 0.1em 0;
+}
+
+.refresh {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  color: white;
+}
+
+.check {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  font-size: 1.2em;
+  color: red;
+}
+
+</style>
+</head>
+<body>
+
+<div class='container clearfix'>
+
+  <div class='header'>
+    <div class='toplink'>
+      <ul>
+        <li><a href='logout.html'>Log Out</a></li>
+	    <li><a href='help.html'>Help</a></li>
+	    <li><a href='account.html'>Hello, Test Student!</a></li>
+      </ul>
+    </div>
+    <h1>EVERETT</h1>
+    <h3>COMMUNITY COLLEGE</h3>
+  </div>
+  
+  <div class='nav'>
+    <ul>
+      <li><a href='../../Student%20Dashboard/student-dashboard.html'>Advisor Dashboard</a></li>
+	  <li><a href='#'>Site Setting</a></li>
+    </ul>
+  </div>
+  
+  <div class='main'>
+    <h1 id='mainheader'>Student's Active Degree Plan</h1>
+    
+	<div class='panel'>
+ 
+	  <div class='legend'>
+	    <h4 class='sectionheading'>Legend:</h4>
+		<ul>
+	      <li style='color: rgb(0, 129, 228);'>M: Morning</li><br>
+	      <li style='color: rgb(235, 105, 0);'>A: Afternoon</li><br>
+	      <li style='color: rgb(131, 0, 222);'>E: Evening</li><br>
+	  </ul>
+	  </div>
+	  
+	  <div class='degreeplan'>
+	    <h2>University of Washington Bothell - Computer Science</h2>
+		<div id="redips-drag">
+	    <table class="degreetable">
+          <tr>
+            <th id= 'autH01' class="redips-mark">Fall </th>
+            <th id= 'winH01' class="redips-mark">Winter </th> 
+            <th id= 'sprH01' class="redips-mark">Spring </th>
+	        <th id= 'sumH01' class="redips-mark">Summer </th>
+          </tr>
+          <tr>
+            <td id = 'aut01' value = '1' class="cell"> </td>
+            <td id = 'win01' value = '2' class="cell"></td>
+            <td id = 'spr01' value = '3' class="cell"></td>
+	        <td id = 'sum01' value = '4' class="cell"></td>
+          </tr>
+          <tr>
+            <td id = 'aut02' value = '1' class="cell"></td>
+            <td id = 'win02' value = '2' class="cell"></td>
+            <td id = 'spr02' value = '3' class="cell"></td>
+	        <td id = 'sum02' value = '4' class="cell"></td>
+          </tr>
+	      <tr>
+	        <td id = 'aut03' value = '1' class="cell"></td>
+            <td id = 'win03' value = '2' class="cell"></td>
+            <td id = 'spr03' value = '3' class="cell"></td>
+	        <td id = 'sum03' value = '4' class="cell"></td>
+	      </tr>
+	      <tr>
+	        <td id = 'aut04' value = '1' class="cell"></td>
+            <td id = 'win04' value = '2' class="cell"></td>
+            <td id = 'spr04' value = '3' class="cell"></td>
+	        <td id = 'sum04' value = '4' class="cell"></td>
+	      </tr>
+	      <tr>
+	        <td id = 'aut05' value = '1' class="cell"></td>
+            <td id = 'win05' value = '2' class="cell"></td>
+            <td id = 'spr05' value = '3' class="cell"></td>
+	        <td id = 'sum05' value = '4' class="cell"></td>
+	      </tr>
+	      <tr>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+  	      </tr>
+	      <tr>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	      </tr>
+        </table>
+		
+		<table class="degreetable">
+          <tr>
+            <th id='autH02' class="redips-mark">Fall </th>
+            <th id='winH02' class="redips-mark">Winter </th> 
+            <th id='sprH02' class="redips-mark">Spring </th>
+	        <th id='sumH02' class="redips-mark">Summer </th>
+          </tr>
+          <tr>
+            <td id = 'aut06' value = '1' class="cell"></td>
+            <td id = 'win06' value = '2' class="cell"></td>
+            <td id = 'spr06' value = '3' class="cell"></td>
+	        <td id = 'sum06' value = '4' class="cell"></td>
+          </tr>
+          <tr>
+            <td id = 'aut07' value = '1' class="cell"></td>
+            <td id = 'win07' value = '2' class="cell"></td>
+            <td id = 'spr07' value = '3' class="cell"></td>
+	        <td id = 'sum07' value = '4' class="cell"></td>
+          </tr>
+	      <tr>
+	        <td id = 'aut08' value = '1' class="cell"></td>
+            <td id = 'win08' value = '2' class="cell"></td>
+            <td id = 'spr08' value = '3' class="cell"></td>
+	        <td id = 'sum08' value = '4' class="cell"></td>
+	      </tr>
+	      <tr>
+	        <td id = 'aut09' value = '1' class="cell"></td>
+            <td id = 'win09' value = '2' class="cell"></td>
+            <td id = 'spr09' value = '3' class="cell"></td>
+	        <td id = 'sum09' value = '4' class="cell"></td>
+	      </tr>
+	      <tr>
+	        <td id = 'aut10' value = '1' class="cell"></td>
+            <td id = 'win10' value = '2' class="cell"></td>
+            <td id = 'spr10' value = '3' class="cell"></td>
+	        <td id = 'sum10' value = '4' class="cell"></td>
+	      </tr>
+	      <tr>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	      </tr>
+	      <tr>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	        <td class="placeholder"></td>
+	      </tr>
+        </table>
+	  </div>
+	  </div>
+	  
+	  <div class='buttons'>
+	    <button id='save' class='savePlan'>Save</button>
+		<!--<button class='setPlanAsActive'>Reject</button>-->
+	  </div>
+	  
+	  
+	  
+	  
+	</div>
+	
+  </div>
+  
+  <div class='footer'>
+    <p>&#169;Everett Community College</p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Output page for processed JSON file</title>
+	<meta charset="UTF-8" >
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<script src="processJSON.js"></script>
+	<script src="../jQuery/jquery-3.2.1.js"></script>
+	<style>
+	</style>
+  </head>
+  <body>
+    <style>
+	* {
+	  font-family: 'Open Sans', sans-serif;
+	}
+	#tagM {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(0, 129, 228);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to top right, rgb(0, 129, 228), rgb(0, 198, 228));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	#tagA {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(220, 81, 0);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to bottom right, rgb(255, 155, 45), rgb(220, 81, 0));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	#tagE {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(101, 0, 192);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to bottom, rgb(172, 0, 248), rgb(101, 0, 192));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	#tagSS {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(0, 135, 172);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to bottom, rgb(0, 217, 231), rgb(0, 135, 172));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}	    
+	#tagH {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(234, 146, 0);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to bottom, rgb(255, 202, 60), rgb(234, 146, 0));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	#tagR {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(217, 109, 0);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to top, rgb(146, 62, 0), rgb(217, 109, 0));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	#tagC {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(194, 60, 168);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to bottom, rgb(255, 113, 255), rgb(194, 60, 168));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	#tagQ {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(75, 51, 200);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to bottom, rgb(0, 161, 255), rgb(75, 51, 200));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	#tagNS {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(0, 164, 21);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to bottom, rgb(17, 239, 77), rgb(0, 164, 21));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	} 
+	#tagTE {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(79, 79, 79);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to top, rgb(79, 79, 79), rgb(159, 159, 159));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	#tagNSL {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(118, 139, 0);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to bottom, rgb(181, 207, 25), rgb(118, 139, 0));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	#tagD {
+      font-size: 0.7em;
+      border: none;
+      padding: 0.5em 1em;
+      text-align: center;
+      display: inline-block;
+      outline: none;
+	  border-style: solid;
+	  border-color: rgb(178, 0, 127);
+	  border-width: 0.1em;
+	  border-radius: 1em;
+	  background: linear-gradient(to bottom, rgb(255, 0, 202), rgb(178, 0, 127));
+	  color: white;
+	  margin-left: 1em;
+	  margin-top: 1em;
+	}
+	</style>
+    <h1>This is a html page for showing processed JSON file output.</h1>
+	
+	<form>
+	  SID:<br>
+	  <input type="text" id="input" name="studentid" placeholder="student ID">
+	  <br><br>
+	  <input type="button" onclick="displayActivePlan(document.getElementById('input').value)" value="submit">
+    </form>	
+	<p id="parameter"></p>
+	<br>
+	<a href="file:///C:/Users/klinu/Desktop/HTML%20Folder/Capstone/JSON/BusinessAtWWU">JSON File</a><br><br>
+	<input id='JSONbutton' type='button' value='load JSON file'><br><br>
+	<input type="button" onclick="displayBusinessTable()" value="Display Table">
+	<p id="table"></p>
+	<p id='text'></p>
+	<p id='tabletext'></p>
+	<p id='tagM'>M</p>
+	<p id='tagA'>A</p>
+	<p id='tagE'>E</p>
+	<p id='tagSS'>SS</p>
+	<p id='tagH'>H</p>
+	<p id='tagR'>R</p>
+	<p id='tagC'>C</p>
+	<p id='tagQ'>Q</p>
+	<p id='tagNS'>NS</p>
+	<p id='tagTE'>TE</p>
+	<p id='tagNSL'>NS-L</p>
+	<p id='tagD'>D</p>
+	<script>
+	  var sID, requestMethod, filePath, asyncStatus, planTable, activePlanObject;
+	  requestMethod = 'POST';
+	  asyncStatus = true;
+	  var text, initial, table;
+	  var maxYear = 0;
+	  var minYear = 0;
+	  var numOfYear = 0;
+	  text = 'Head:';
+	  initial = '';
+	  var activeDegreeTable = new tableObject();  //check table object has indeed been created;
+	  var statusArray = [];
+	  function displayActivePlan(studentID) {
+	      sID = studentID;
+		  var activePlanParam, xmlhttp;
+	      activePlanParam = setActivePlanParam(activePlanParam, sID);
+	      document.getElementById('parameter').innerHTML = activePlanParam;
+	  }
+	  <!-- this block will call a function to handle the reponse from the server
+      <!-- xmlhttp = new XMLHttpRequest();
+      <!-- xmlhttp.onreadystatechange = displayTable(this, activePlanObject, planTable);
+	  <!--sendActivePlanParam(this, activePlanParam, requestMethod, filePath, asyncStatus)
+	  
+	  function displayBusinessTable() {
+	    text2 = '[\n  {\n    "planId": 2482,\n    "courseNumber": "BUS& 101",\n    "courseID": 253,\n    "quarter": "Fall",\n    "year": 2016\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ESL 097",\n    "courseID": 550,\n    "quarter": "Fall",\n    "year": 2016\n  },' + 
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ACCT 110",\n    "courseID": 25,\n    "quarter": "Fall",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ENGL& 101",\n    "courseID": 490,\n    "quarter": "Fall",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ECON& 202",\n    "courseID": 401,\n    "quarter": "Winter",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ENGL 097",\n    "courseID": 451,\n    "quarter": "Winter",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "AEP 098",\n    "courseID": 42,\n    "quarter": "Spring",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ECON& 201",\n    "courseID": 400,\n    "quarter": "Spring",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ENGL 098",\n    "courseID": 452,\n    "quarter": "Summer",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH& 148",\n    "courseID": 920,\n    "quarter": "Fall",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ACCT& 201",\n    "courseID": 31,\n    "quarter": "Winter",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ENGL& 102",\n    "courseID": 492,\n    "quarter": "Spring",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "BUS& 201",\n    "courseID": 254,\n    "quarter": "Spring",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH 138",\n    "courseID": 1401,\n    "quarter": "Summer",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ACCT& 203",\n    "courseID": 33,\n    "quarter": "Fall",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH 080",\n    "courseID": 897,\n    "quarter": "Winter",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ACCT& 202",\n    "courseID": 32,\n    "quarter": "Spring",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH 091",\n    "courseID": 901,\n    "quarter": "Spring",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH 092",\n    "courseID": 902,\n    "quarter": "Summer",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH& 146",\n    "courseID": 919,\n    "quarter": "Summer",\n    "year": 2020\n  }]';
+		text3 = '[\n  {\n    "planId": 2482,\n    "courseNumber": "BUS& 101",\n    "courseID": 253,\n    "quarter": "Fall",\n    "year": 2016\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ESL 097",\n    "courseID": 550,\n    "quarter": "Fall",\n    "year": 2016\n  },' + 
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ACCT 110",\n    "courseID": 25,\n    "quarter": "Fall",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ENGL& 101",\n    "courseID": 490,\n    "quarter": "Fall",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ECON& 202",\n    "courseID": 401,\n    "quarter": "Winter",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ENGL 097",\n    "courseID": 451,\n    "quarter": "Winter",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "AEP 098",\n    "courseID": 42,\n    "quarter": "Spring",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ECON& 201",\n    "courseID": 400,\n    "quarter": "Spring",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ENGL 098",\n    "courseID": 452,\n    "quarter": "Summer",\n    "year": 2017\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH& 148",\n    "courseID": 920,\n    "quarter": "Fall",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ACCT& 201",\n    "courseID": 31,\n    "quarter": "Winter",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ENGL& 102",\n    "courseID": 492,\n    "quarter": "Spring",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "BUS& 201",\n    "courseID": 254,\n    "quarter": "Spring",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH 138",\n    "courseID": 1401,\n    "quarter": "Summer",\n    "year": 2018\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ACCT& 203",\n    "courseID": 33,\n    "quarter": "Fall",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH 080",\n    "courseID": 897,\n    "quarter": "Winter",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "ACCT& 202",\n    "courseID": 32,\n    "quarter": "Spring",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH 091",\n    "courseID": 901,\n    "quarter": "Spring",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH 092",\n    "courseID": 902,\n    "quarter": "Summer",\n    "year": 2019\n  },' +
+              '\n  {\n    "planId": 2482,\n    "courseNumber": "MATH& 146",\n    "courseID": 919,\n    "quarter": "Summer",\n    "year": 2020\n  }]';
+	    var activeplanObj, courseListObjects;
+		var statusObject = {
+	      empty: 0,
+	      unmodified: 1,
+	      dragged: 2,
+	      dropped: 3,
+	      removed: 4
+        };
+	    activePlanObj = JSON.parse(text2);
+		courseListObjects = JSON.parse(text3);
+		constructTable(activePlanObj, courseListObjects, 5);
+		//printTable();
+		initial = displayTable(table, initial, 5);
+        document.getElementById('table').innerHTML = initial;
+	    //document.getElementById('table').childNodes[0].nodeValue = null;
+		//document.getElementById('text').innerHTML = text;
+	  }
+		
+      function constructTable(courseObjects, courseListObjects, row) {
+		//initialize variables
+		var cellIndex = 0;
+		//create a temp column
+		var tempColumn = new columnObject('', 0);
+	
+		for (;cellIndex < courseObjects.length; cellIndex++) {
+			statusArray[courseObjects[cellIndex].courseID] = 1;
+			var cell = new cellObject(courseObjects[cellIndex]);  //add course object to cell object
+			if (maxYear == 0) {
+			    maxYear = courseObjects[cellIndex].year;
+			}
+			else if (maxYear != 0 && minYear == 0) {
+			    minYear = Math.min(maxYear, courseObjects[cellIndex].year);
+			} else {
+			    compare(maxYear, minYear, courseObjects[cellIndex].year); //get max/min year
+			}
+			text+= 'comparing: ' + 'max year: ' + maxYear + ', min year: ' + minYear + ', and course year ' + courseObjects[cellIndex].year + '<br>';
+			tempColumn.pushCellObject(cell);    //add cell object to column object
+		}
+		cellIndex = 0;
+		for (;cellIndex < 1460; cellIndex++) {  //fill undefined gap
+			if (typeof statusArray[cellIndex] === 'undefined') {
+				statusArray[cellIndex] = 0;
+			}
+		}
+		text+= statusArray + '<br>';
+		text+= 'length of tempColumn is ' + tempColumn.cellArray.length + '<br>';
+		text+= 'max year is: ' + maxYear + ', and min year is: ' + minYear + '<br>';
+		numOfYear = maxYear - minYear + 1;
+		cellIndex = 0;
+		for (;cellIndex < numOfYear; cellIndex++) {   //add all necessary column
+			activeDegreeTable.pushColumnObject(new columnObject('Fall', maxYear-numOfYear+1+cellIndex));
+			activeDegreeTable.pushColumnObject(new columnObject('Winter', maxYear-numOfYear+1+cellIndex));
+			activeDegreeTable.pushColumnObject(new columnObject('Spring', maxYear-numOfYear+1+cellIndex));
+			activeDegreeTable.pushColumnObject(new columnObject('Summer', maxYear-numOfYear+1+cellIndex));
+		}
+		text+= 'number of columns is ' + activeDegreeTable.columnArray.length + '<br>';
+		cellIndex = 0;
+		var tempCellObject;
+		var columnIndex;
+		for (;cellIndex < tempColumn.cellArray.length; cellIndex++) {
+			text+= 'temp object(' + cellIndex + '): ' + tempColumn.cellArray[cellIndex].course.quarter + '<br>';
+			text+= 'temp object(' + cellIndex + '): ' + tempColumn.cellArray[cellIndex].course.year + '<br>';
+			columnIndex = 0;
+			for (;columnIndex < activeDegreeTable.columnArray.length; columnIndex++) {
+			    text+= 'table object(' + cellIndex + '): ' + activeDegreeTable.columnArray[columnIndex].quarter + '<br>';
+			    text+= 'table object(' + cellIndex + '): ' + activeDegreeTable.columnArray[columnIndex].year + '<br>';
+				if (activeDegreeTable.columnArray[columnIndex].quarter == tempColumn.cellArray[cellIndex].course.quarter && 
+				activeDegreeTable.columnArray[columnIndex].year == tempColumn.cellArray[cellIndex].course.year) {
+				    text+= 'Found a match at:<br>';
+					text+= 'table object(' + cellIndex + '): ' + activeDegreeTable.columnArray[columnIndex].quarter + '<br>';
+			        text+= 'table object(' + cellIndex + '): ' + activeDegreeTable.columnArray[columnIndex].year + '<br>';
+					activeDegreeTable.columnArray[columnIndex].pushCellObject(tempColumn.cellArray[cellIndex]);
+					text+= 'Column with year: ' + activeDegreeTable.columnArray[columnIndex].year +
+					', and quarter: ' + activeDegreeTable.columnArray[columnIndex].quarter + 
+					' with a value of ' + activeDegreeTable.columnArray[columnIndex].cellArray[activeDegreeTable.columnArray[columnIndex].cellArray.length-1] + '<br>';
+					break;
+				}
+			}
+		
+		}
+		columnIndex = 0;
+		for (;columnIndex < activeDegreeTable.columnArray.length; columnIndex++) {
+		    while (activeDegreeTable.columnArray[columnIndex].cellArray.length < row) {
+			    var emptyCourse = {
+					"planId": -1,
+					"courseNumber": "",
+					"courseID": -1,
+					"quarter": "",
+					"year": -1
+				}
+				var emptyCell = new cellObject(emptyCourse);
+				activeDegreeTable.columnArray[columnIndex].pushCellObject(emptyCell);
+			}
+			text+= 'length of column array(' + columnIndex + ') is: ' + activeDegreeTable.columnArray[columnIndex].cellArray.length + '<br>';
+		}
+		text+= 'finished assigning to column<br>';
+      }
+	  
+	  function printTable() {
+	    var columnIndex = 0;
+		var rowIndex;
+		var initial = '';
+		initial += 'length is: ' + activeDegreeTable.columnArray.length / 4 + '<br>';
+	    for (;columnIndex < activeDegreeTable.columnArray.length / 4; columnIndex++) {
+		    initial+= 'column index is: ' + columnIndex + '<br>';
+			initial+= '<tr>';
+			initial+= '<th>' + activeDegreeTable.columnArray[columnIndex*4].year + ' Fall</th>';
+			initial+= '<th>' + activeDegreeTable.columnArray[columnIndex*4+1].year + ' Winter</th>';
+			initial+= '<th>' + activeDegreeTable.columnArray[columnIndex*4+2].year + ' Spring</th>';
+			initial+= '<th>' + activeDegreeTable.columnArray[columnIndex*4+3].year + ' Summer</th>';
+			initial+= '<tr>';
+			initial+= '<br>';
+			rowIndex = 0;
+			for (;rowIndex < 5; rowIndex++) {
+				initial+= '<tr>';
+				initial+= '<td>' + activeDegreeTable.columnArray[columnIndex].cellArray[rowIndex].course.courseNumber + '</td>';
+				initial+= '<td>' + activeDegreeTable.columnArray[columnIndex+1].cellArray[rowIndex].course.courseNumber + '</td>';
+				initial+= '<td>' + activeDegreeTable.columnArray[columnIndex+2].cellArray[rowIndex].course.courseNumber + '</td>';
+				initial+= '<td>' + activeDegreeTable.columnArray[columnIndex+3].cellArray[rowIndex].course.courseNumber + '</td>';
+				initial+= '</tr>';
+			}
+			initial+= '<br>';
+		}
+		document.getElementById('tabletext').innerHTML = initial;
+	  }
+
+      function displayTable(table, initial, row) {
+		initial += "<table border='1'>";
+		var columnIndex = 0;
+		var rowIndex;
+		for (;columnIndex < activeDegreeTable.columnArray.length / 4; columnIndex++) {
+			initial+= '<tr>';
+			initial+= '<th>' + activeDegreeTable.columnArray[columnIndex*4].year + ' Fall</th>';
+			initial+= '<th>' + activeDegreeTable.columnArray[columnIndex*4+1].year + ' Winter</th>';
+			initial+= '<th>' + activeDegreeTable.columnArray[columnIndex*4+2].year + ' Spring</th>';
+			initial+= '<th>' + activeDegreeTable.columnArray[columnIndex*4+3].year + ' Summer</th>';
+			initial+= '<tr>';
+			rowIndex = 0;
+			for (;rowIndex < row; rowIndex++) {
+				initial+= '<tr>';
+				initial+= '<td>' + activeDegreeTable.columnArray[columnIndex*4].cellArray[rowIndex].course.courseNumber + '</td>';
+				initial+= '<td>' + activeDegreeTable.columnArray[columnIndex*4+1].cellArray[rowIndex].course.courseNumber + '</td>';
+				initial+= '<td>' + activeDegreeTable.columnArray[columnIndex*4+2].cellArray[rowIndex].course.courseNumber + '</td>';
+				initial+= '<td>' + activeDegreeTable.columnArray[columnIndex*4+3].cellArray[rowIndex].course.courseNumber + '</td>';
+				initial+= '</tr>';
+			}
+		}
+		initial += "</table>";
+		return initial;
+		//document.getElementById('tabletext').innerHTML = initial;
+      }
+
+	  function compare(num1, num2, num3) {
+	    maxYear = Math.max(num1, num2, num3);
+	    minYear = Math.min(num1, num2, num3);
+      }
+	  
+	  function tableObject() {
+	    text+= 'sucessful table initialization<br>';
+	    this.columnArray = [];
+	    this.pushColumnObject = function (columnObj) {
+		  this.columnArray.push(columnObj);
+		}
+	  }
+
+      function columnObject(quarter, year) {
+	    this.cellArray = [];
+	    this.quarter = quarter;
+	    this.year = year;
+	    /*this.update = function (?) {
+	    	???
+	    }
+	    this.addInputBox = function (?) {
+	    	???
+	    }
+	    this.columnSort = function (?) {
+		    ???
+	    }*/
+	    this.pushCellObject = function (cellObj) {
+	    	this.cellArray.push(cellObj);
+	    }
+	    this.addCellObject = function (cellObj) {
+	    	this.cellArray[cellObj.course.courseid] = cellObj;
+	    }
+	    this.popCellObject = function() {
+		    return this.cellArray.pop();
+	    }
+	    this.removeCellObject = function () {
+
+	    }
+      }
+
+      function cellObject(courseObj) {
+		this.course = courseObj;
+		//this.xIcon = removeObject;
+		//this.undoIcon = undoObject;
+		//this.inputBox = inputObject;
+		this.addCourse = function (newCourse) {
+			this.course = newCourse;
+		}
+		/*this.removeCourse = function (?) {
+			???
+		}
+		this.showObject = function (?) {
+			???
+		}
+		this.hideObject = function (?) {
+			???
+		}*/
+	  }	  
+	  
+	</script>
+	
+  </body>
+</html>

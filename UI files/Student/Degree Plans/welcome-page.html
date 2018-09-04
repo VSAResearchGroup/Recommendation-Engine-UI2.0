@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Virtual Academic Advisor Degree Plans Page</title>
+<link rel="shortcut icon" href="favicon.ico"/>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+<link rel='stylesheet' href='../styles.css'>
+<link rel='stylesheet' href='degree-plans.css'>
+
+<script src='../jquery-3.2.1.js'></script>
+<script src='../vaajavascript.js'></script>
+<script src='degree-plans.js'></script>
+<style>
+.headings { 
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 0;
+  margin-left: 6.75em; 
+  margin-bottom: 0.5em;
+}
+
+.button {
+  font-size: 1em;
+  border: none;
+  padding: 0.5em 1em;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+}
+
+.properties {
+  border-style: outset solid;
+  border-color: rgb(184, 0, 0);
+  border-width: 0.2em;
+  border-radius: 0.5em;
+  background-color: white;
+  box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.21),0 0.7em 3em 0 rgba(0,0,0,0.19);
+}
+
+.properties:hover {
+  background-color: rgb(184, 0, 0);
+  color: white;
+}
+
+.properties:active {
+  transform: translateY(0.2em);
+  box-shadow: 0 0.1em 1em 0 rgba(0,0,0,0.21),0 0.3em 3em 0 rgba(0,0,0,0.19);
+}
+
+#inactiveplanlist {
+  list-style-type: none;
+}
+
+.undoIcon {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  color: rgb(184, 0, 0);
+  cursor: pointer;
+}
+
+#inactiveplanlist li {
+  margin-bottom: 1em;
+}
+
+.inactiveplanname {
+  font-size: 1em;
+  font-weight: bold;
+  color: rgb(184, 0, 0);
+  margin-right: 1em;
+  width: 50%;
+  display: inline-block;
+}
+
+.inactiveplanname:hover {
+  color: rgb(140, 0, 0);
+}
+
+#createplan {
+  font-size: 1em;
+  font-weight: bold;
+  display: block;
+  margin-top: 0;
+  margin-left: 13.5em; 
+  margin-bottom: 5em;
+  color: rgb(184, 0, 0);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalcontent {
+  position: relative;
+  left: 30%;
+  top: 10%;
+  border: 0.3em solid rgb(184, 0, 0);
+  border-radius: 0.3em;
+  background-color: white;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.fadeIn {
+  display: block;
+  animation-name: fadeIn;
+  animation-duration: 1s
+}
+
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+#propertieslist {
+  list-style-type: none;
+  margin: 1em 1em;
+  padding: 0;
+}
+
+#propertieslist li {
+  margin-bottom: 1em; 
+  width: 100%;
+  height: 1.5em;
+}
+
+#activeplantitle {
+  min-width: 90%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+</style>
+</head>
+<body>
+<div class='container'>
+
+  <div class='header clearfix'>
+    <div class='toplink'>
+      <ul>
+	    <li><a href='../account.html'>Hello, Test Student!</a></li>
+		<li><a href='../help.html'>Help</a></li>
+        <li><a href='../logout.html'>Log Out</a></li>
+      </ul>
+    </div>
+		<a href="http://www.everettcc.edu/">
+			<img src="evcclogo.png" alt="Home Page" style="position:relative; top:20px; left:140px;">
+		</a>
+  </div>
+  
+  <div class='nav clearfix'>
+    <ul>
+      <li><a id='studentdashboard' href='../Student%20Dashboard/student-dashboard.html'>Student Dashboard</a></li>
+	  <li><a id='degreeplans' href='degree-plans.html'>Degree Plans</a></li>
+	  <li><a id='exploreplans' href='#'>Explore Plans</a></li>
+    </ul>
+  </div>
+  
+  <div class='main clearfix'>
+    <div class='heading'>
+      <h1 id='mainheader'>Welcome New Student</h1>
+      <h5 id='path'>Here you will be able to begin your first degree plan!</h5>
+	  <h5 id='path'>Please click on the link below to begin your first plan</h5>
+	</div>
+	<div>
+	<h5 id= 'path'><a href = '../../Student/Degree%20Plans/New%20Plans/new-plans.html'> Click me! </a></h5>
+	</div>
+	
+	
+</body>
+</html>
