@@ -14,7 +14,7 @@ $(document).ready(function(){
     var $dgs = $('#stDegree'); // ID for the drop down for Degree options
 	
 	//SESSION STORAGE TEST DATA//
-	
+	/*
 	sessionStorage.setItem('studentFirstName', 'Sara');
 	sessionStorage.setItem('studentLastName', 'Smith');
 	sessionStorage.setItem('studentID', '12345');
@@ -24,14 +24,14 @@ $(document).ready(function(){
 	sessionStorage.setItem('studentJobType', '1');
 	sessionStorage.setItem('studentEnrollmentType', '1');
 	sessionStorage.setItem('studentTransfer', '1');
-	//Comment out if not using//
+	//Comment out if not using//*/
 	
 	var fullName = sessionStorage.studentFirstName+" "+ sessionStorage.studentLastName;
-	$('#nameF').val(sessionStorage.studentFirstName);
-	$('#nameL').val(sessionStorage.studentLastName);
-	$('#email').val(sessionStorage.studentEmail);
-	$('select#jType').val(sessionStorage.studentJobType);
-	$('select#eType').val(sessionStorage.studentEnrollmentType);
+	$('#nameF').append(sessionStorage.studentFirstName);
+	$('#nameL').append(sessionStorage.studentLastName);
+	$('#email').append(sessionStorage.studentEmail);
+	$('select#jType').append(sessionStorage.studentJobType);
+	$('select#eType').append(sessionStorage.studentEnrollmentType);
 	
 	
 	
@@ -51,7 +51,7 @@ $(document).ready(function(){
             {
                 //Add item to the dropdown
                 $uniOptions.push(university);
-                $uniOptions.append('<option value="'university.ID'">'+university.Name+'</option>');
+                $uniOptions.append('<option value="'+university.ID+'">'+university.Name+'</option>');
             });
             //Second AJAX call Major
             $.ajax({
@@ -65,7 +65,7 @@ $(document).ready(function(){
                     $.each(degreeData.recordset, function(index, degree)
                     {
                         //Add item to the dropdown
-                        $dgs.append('<option value="'degree.id'">'+degree.Name+'</option>');
+                        $dgs.append('<option value="'+degree.id+'">'+degree.Name+'</option>');
                     });
                 },
                 error: function(){ //Error in the AJAX call

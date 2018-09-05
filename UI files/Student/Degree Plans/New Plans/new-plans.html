@@ -86,6 +86,23 @@
   outline: none;
 }
 
+select{
+  margin-left: 1em;
+  cursor: pointer;
+  outline: none;
+}
+
+.select-selected {
+	background-color: rgb(184, 0, 0);
+	color: white;
+}
+
+.select-items {
+  position: absolute;
+  background-color: white;
+  color: black;
+}
+
 .generate {
   border-style: outset solid;
   border-color: rgb(184, 0, 0);
@@ -119,9 +136,8 @@
 	    <li><a href='../../account.html'>Hello, Test Student!</a></li>
       </ul>
     </div>
-    <a href="http://www.everettcc.edu/">
-			<img src="evcclogo.png" alt="Home Page" style="position:relative; top:20px; left:140px;">
-		</a>
+    <h1>EVERETT</h1>
+    <h3>COMMUNITY COLLEGE</h3>
   </div>
   
   <div class='nav clearfix'>
@@ -139,60 +155,76 @@
 	</div>
 	<div class='dropdown'>
 	  <br><label class='label'>Transferring College:</label><br>
-	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='transferringcollege'>Select a college</button><br>
-		<!--<i class='downarrow material-icons'>arrow_drop_down</i>-->
-	    <div id='transcollegedropdown' class='dropdown-content'>
-		  <option value=''></option>
-		</div>
-		
+	    <select id='uni' style="position:relative; left:20px;">
+		  
+		</select>
+		<br>
 	  <br><label class='label'>Major:</label><br>	
-	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='major'>Select a major</button><br>
-	    <div id='majordropdown' class='dropdown-content'>
-		  <a href='#' onclick='myFunction2(this, 1);return false;'>Computer Engineering</a>
-		  <a href='#' onclick='myFunction2(this, 1);return false;'>Mechanical Engineering</a>
-		  <a href='#' onclick='myFunction2(this, 1);return false;'>Electrical Engineering</a>
-		</div>
-		
+		<select id ='major' style="position:relative; left:20px; font-size:14px;">
+		</select>
+		<br>
+		<br><label class='label'>Highest English:</label><br>
+		<p id='engClass'></p>
+		<br>
+		<br><label class='label'>Highest Math Course:</label><br>
+		<p id='mathClass'></p>
+		<br>
 	  <br><label class='label'>Time Preference:</label><br>	
-	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='timepreference'>Select a time preference</button><br>
-	    <div id='timeprefdropdown' class='dropdown-content'>
-		  <a href='#' onclick='myFunction2(this, 2);return false;'>Morning</a>
-		  <a href='#' onclick='myFunction2(this, 2);return false;'>Afternoon</a>
-		  <a href='#' onclick='myFunction2(this, 2);return false;'>Evening</a>
-		</div>
-		
+	  <select id = 'timePref' style="position:relative; left:20px;">
+		<option selected disabled>Select Time Preference</option>
+		<option value="1">Morning Classes</option>
+		<option value="3">Evening Classes</option>
+		</select>
+		<br>
 	  <br><label class='label'>Type of Enrollment:</label><br>	
-	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='enrollment'>Select type of enrollment</button><br>
-	    <div id='enrollmentdropdown' class='dropdown-content'>
-		  <a href='#' onclick='myFunction2(this, 3);return false;'>Full Time Student</a>
-		  <a href='#' onclick='myFunction2(this, 3);return false;'>Half Time Student</a>
-		  <a href='#' onclick='myFunction2(this, 3);return false;'>Part Time Student</a>
-		</div>
-		
-	  <br><label class='label'>Enroll in Summer:</label><br>	
-	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='summer'>Select option to enroll in summer</button><br>
-	    <div id='summerdropdown' class='dropdown-content'>
-		  <a href='#' onclick='myFunction2(this, 4);return false;'>Yes</a>
-		  <a href='#' onclick='myFunction2(this, 4);return false;'>No</a>
-		</div>
-		
+	  <select id = 'enrollType' style="position:relative; left:20px;">
+		<option selected disabled>Select Enrollment Type</option>
+		<option value="1">Full-Time Student</option>
+		<option value="2">Half-Time Student</option>
+		</select>
+		<br>
+	  <br><label class='label'>Enroll in Summer Year:</label><br>	
+	  <select id = 'summerOption' style="position:relative; left:20px;">
+		<option selected disabled>Select Choice</option>
+		<option value="2">No</option>
+		<option value="1">Yes</option>
+		</select>
+		<br>
+		<br><label class='label'>Total Credits per Quarter:</label><br>	
+	  <select id = 'creditPerQuarter' style="position:relative; left:20px;">
+		<option selected disabled>Select Quarter Start</option>
+		<option value="1">5</option>
+		<option value="2">10</option>
+		<option value="3">15</option>
+		<option value="4">20</option>
+		</select>
+		<br>
+		<br><label class='label'>Total Major Credits per Quarter:</label><br>	
+	  <select id = 'majorCreditPerQuarter' style="position:relative; left:20px;">
+		<option selected disabled>Select Quarter Start</option>
+		<option value="1">5</option>
+		<option value="2">10</option>
+		<option value="3">15</option>
+		<option value="4">20</option>
+		</select>
+		<br>
 	  <br><label class='label'>Quarter Start:</label><br>	
-	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='quarter'>Select first quarter to start at</button><br>
-	    <div id='quarterdropdown' class='dropdown-content'>
-		  <a href='#' onclick='myFunction2(this, 5);return false;'>Fall</a>
-		  <a href='#' onclick='myFunction2(this, 5);return false;'>Winter</a>
-		  <a href='#' onclick='myFunction2(this, 5);return false;'>Spring</a>
-		</div>
-		
+	  <select id = 'startQuarter' style="position:relative; left:20px;">
+		<option selected disabled>Select Quarter Start</option>
+		<option value="4">Summer Quarter</option>
+		<option value="1">Fall Quarter</option>
+		<option value="2">Winter Quarter</option>
+		<option value="3">Spring Quarter</option>
+		</select>
+		<br>
 	  <br><label class='label'>Job Type:</label><br>	
-	  <button onclick='myFunction(this.name)' class='dropdownbutton' name='job'>Select a job type</button><br>
-	    <div id='jobdropdown' class='dropdown-content'>
-		  <a href='#' onclick='myFunction2(this, 6);return false;'>No Job</a>
-		  <a href='#' onclick='myFunction2(this, 6);return false;'>Part Time</a>
-		  <a href='#' onclick='myFunction2(this, 6);return false;'>Full Time</a>
-		</div>
+	  <select id ='jobType' style="position:relative; left:20px;">
+		<option selected disabled>Select Job Type</option>
+		<option value="3">No Job</option>
+		<option value="1">Full-Time Employee</option>
+		<option value="2">Part-Time Employee</option></select>
 	</div>
-	<br><button class='generate button'>Generate Plans</button><br>
+	<br><input type="submit" id ="submitBtn" class='generate button' value = 'Generate Plans'></button><br>
   </div>
 
   <div class='footer'>

@@ -36,25 +36,27 @@ $(document).ready(function() {
 	$studentID.html("Student ID: " + sessionStorage.studentID);
 	$email.html("Email: " + sessionStorage.studentEmail);
 	
-	
+	//Leads to the Student Edit page
 	$studentEdit.click(function(event){
 		event.preventDefault();
 		window.location.href = '../../../Student/studentEditPage.html';
 	});
-	
+	//Goes to the create new plans page
 	$newPlan.click(function(event){
 		event.preventDefault();
 		window.location.href = '../../../Student/Degree%20Plans/New%20Plans/new-plans.html';
 	});
-	
+	//Goes to the active plans page schedule
 	$activePlan.click(function(event){
 		event.preventDefault();
+		//Hardcoded the Plan type
 		sessionStorage.setItem("planType", "1");
 		window.location.href = '../../Advisor%20Dashboard/Advise%20Student%20Active%20Degree Plan/advise-degree-plans.html';
 	});
-	
+	//Goes to the inactive plans page schedule
 	$inactivePlan.click(function(event){
 		event.preventDefault();
+		//Hardcoded plan type
 		sessionStorage.setItem("planType", "0");
 		window.location.href = '../../Advisor%20Dashboard/Advise%20Student%20Active%20Degree Plan/advise-degree-plans.html';
 	});

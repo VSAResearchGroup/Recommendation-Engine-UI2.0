@@ -4,13 +4,7 @@ $(document).ready(function(){
 	var mainURL = 'http://localhost:8080/';
 	var advisorInfoAPI = '';
 	
-	/* Test data
-	sessionStorage.setItem('advFirstName', 'Vali');
-	sessionStorage.setItem('advLastName', 'West');
-	sessionStorage.setItem('advEmail', 'smt@gmail.com');
-	sessionStorage.setItem('advID', '3');
-	*/
-	
+	//Fill the controlls with the advisor information.
 	var fullName = sessionStorage.advFirstName+" "+ sessionStorage.advLastName;
 	$('p#name').text(fullName);
 	$('p#advID').text(sessionStorage.advID);

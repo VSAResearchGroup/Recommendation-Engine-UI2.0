@@ -14,6 +14,7 @@ $(document).ready(function() {
 	//Textbox item
 	$sid = document.getElementById('studentID');
 	
+	//AJAX call to recieve all of the student data
 	$('#loginbutton').click(function(event) {
 		event.preventDefault();
 		alert($sid.value);
@@ -25,6 +26,7 @@ $(document).ready(function() {
         success: function(studentData){ //If the AJAX is successful
 			$.each(studentData.recordset, function(index, studentItems)
             {
+				//Set all of the values for the student
 				sessionStorage.setItem('studentFirstName', studentItems.first_name);
 				sessionStorage.setItem('studentLastName', studentItems.last_name);
 				sessionStorage.setItem('studentID', $sid.value);

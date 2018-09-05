@@ -7,19 +7,22 @@ $(document).ready(function() {
 	var engClassAPI = '/api/preferences/english/';
 	var mathClassAPI = '/api/preferences/math/';
 	
-	
-	var num = 0;
+	//Variables used
 	var $adviseBtn = $('#adviseBtn');
+	//AJAX call for the list of students.
 	$.ajax({
         url: mainURL+advisorStudentListAPI+sessionStorage.advID,
         type:'GET',
         dataType:'json',
         success: function(studentData){ //If the AJAX is successful
-            //For each function to go through each university
+            //For each student, add a new row to the student list
             $.each(studentData.recordset, function(index, student)
             {
-				num++;
+				//By setting the value of the button as the student ID, we would be 
+				//able to access the student information later should the user 
+				//choose to advise that particular student
                 $('#studentlist').append("<ul class = 'studentrow'><li>"+student.StudentID+"</li><li>"+student.first_name+" "+student.last_name+"</li><li><Button value = '"+student.StudentID+"' class='advise-button'>Advise</Button></li></ul>");
+				
             });
            
            
@@ -29,8 +32,12 @@ $(document).ready(function() {
         }
     });
 	
+	//This function focuses on the advise buttons for each student
+	//Once a button is clicked it will take in the button value and
+	// use that value to get the student information.
 	$(document).on("click", '.advise-button', function(event) {
 		event.preventDefault();
+		//Button value
 		$sid = this.value;
 		$.ajax({
         url: mainURL+studentInfoAPI+$sid,
@@ -49,6 +56,7 @@ $(document).ready(function() {
 			sessionStorage.setItem('studentJobType', studentData.recordset[0].JobTypeID);
 			sessionStorage.setItem('studentStatus', studentData.recordset[0].Status);
 			sessionStorage.setItem('studentTransferID', studentData.recordset[0].TransferID);
+			//Go to the advisor student view
 			window.location.href = '../Advise%20Student/Advisor%20Student%20View/advisor-student-view.html';
         },
         error: function(){ //Error in the AJAX call

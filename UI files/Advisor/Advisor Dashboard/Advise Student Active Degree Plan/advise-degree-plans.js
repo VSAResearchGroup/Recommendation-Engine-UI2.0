@@ -25,6 +25,7 @@ $(document).ready(function(){
 		var studentPlan = 'api/plans/displayinactive/'+sessionStorage.studentID+'/3';
 	}
 	
+	//This AJAX call will give the list of all of the course of the specified plan
 	$.ajax({
 			url: mainURL+studentPlan,
 			type:'GET',
@@ -40,11 +41,16 @@ $(document).ready(function(){
 		
 				});
 				
+				//Get the starting and ending year
 				var minYear = yearList[0];
 				var maxYear = yearList[yearList.length-1];
+				//Get the starting quarter
 				var startQuarter = quarterList[0];
+				//Call function to set the years on the table and the header IDs
 				setAllYears(minYear, maxYear, startQuarter)
+				//Create the schedule
 				createSchedule(quarterList, yearList, courseList)
+				//Save the new schedule created
 				$('#save').click(function(event) {
 					event.preventDefault();
 					updateSchedule(tableID, uQuarterList, uYearList, uCourseList)
@@ -62,13 +68,14 @@ $(document).ready(function(){
 		
 		function patchUpdate(uQuarter, uYear, uCourse)
 		{
+			//Send in the new plan to be patched into the list
 			$.ajax({
 					url: mainURL+savePlanAPI,
 					type:'PATCH',
 					dataType:'json',
 					data:{"QuarterID" : uQuarter, "YearID": uYearList, "CourseID": uCourseList, "PlanID": "1"},
 					success: function(data){
-						alert('success' + uCourseList);
+						//alert('success' + uCourseList);
 					},
 					error: function()
 					{
@@ -78,6 +85,7 @@ $(document).ready(function(){
 				});
 		}
 		
+		//Go through the table ID to get the new locations of each class and store them
 		function updateSchedule(tableID, uQuarterList, uYearList, uCourseList)
 		{
 			uQuarterList.length = 0;
@@ -85,6 +93,7 @@ $(document).ready(function(){
 			uCourseList.length = 0;
 			for(i = 0; i < tableID.length; i++)
 			{
+				//Look inside the td cell for a div element
 				$foundDiv = $(tableID[i]).children('div');
 				if($foundDiv.attr('value') === undefined)
 				{
@@ -92,6 +101,7 @@ $(document).ready(function(){
 				}
 				else
 				{
+					//check the header of the colunm for the year
 					var $year = $(tableID[i]).closest('table').find('th').eq($(tableID[i]).index());
 					uQuarterList.push($(tableID[i]).attr('value'));
 					uYearList.push($year.val());
@@ -99,7 +109,7 @@ $(document).ready(function(){
 				}
 			}
 		}
-		
+		//Fill the table with the course list
 		function createSchedule(quarterList, yearList, courseList)
 		{
 			var idIndex = 0;
@@ -120,6 +130,7 @@ $(document).ready(function(){
 				redips.init();
 		}
 		
+		//Set the values and the years for thr headers of the table
 		function setAllYears(minY, maxY, sQuarter)
 		{
 			if(sQuarter == '1')
